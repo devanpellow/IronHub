@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class ProjectDetails extends Component {
+export default class Profile extends Component {
   render() {
     return (
       <div>
@@ -9,6 +9,3 @@ export class ProjectDetails extends Component {
     )
   }
 }
-
-export default ProjectDetails
-
