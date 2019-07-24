@@ -1,1 +1,7 @@
 /* Nav Bar */
+.search-input {
+  display: flex;
+  justify-items: center;
+  
+  width: 50vw
+}
