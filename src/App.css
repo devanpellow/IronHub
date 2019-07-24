@@ -1,1 +1,22 @@
 /* Nav Bar */
+#nav-container{
+  border-bottom: 1px rgb(30,35,53) solid;
+}
+
+/* Home Page (Landing Page) */
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 80vh;
+}
+
+.home-logo {
+  width: 100px;
+  padding-bottom: 50px
+}
+
+.search-input {
+  width: 50vw;
+}
