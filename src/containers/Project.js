@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import Nav from "../components/Nav";
 import ProjectDetails from "../components/Profile/ProjectDetails";
-import OtherProjects from "../components/Profile/OtherPojects";
-
-
+import ProjectSample from "../components/Profile/ProjectSample";
 
 export class ProjectDetails extends Component {
   render() {
@@ -16,7 +14,9 @@ export class ProjectDetails extends Component {
           <ProjectDetails />
         </div>
         <div>
-          <OtherProjects />
+          <ProjectSample />
+          <ProjectSample />
+          <ProjectSample />
         </div>
       </div>
     );
