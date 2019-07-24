@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { Form } from "react-bootstrap";
 
 export class Home extends Component {
+
+  state = {
+    search: ''
+  }
+
 	render() {
 		return (
       <div className="home">
