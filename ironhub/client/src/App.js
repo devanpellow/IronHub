@@ -8,7 +8,7 @@ import Form from "./components/Project/Form";
 function App() {
 	return (
 		<div className="App">
-			<Nav />
+      <Nav />
 			<Home />
 			<ProjectList />
 			<ProjectList />
