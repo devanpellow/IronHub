@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container'
 export default function Nav() {
 	return (
 		<div>
-			<Container>
+			<Container id="nav-container">
 				<Navbar>
 				<Navbar.Brand href="#home">
 				<img
