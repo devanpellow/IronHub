@@ -10,32 +10,31 @@ export default class ProjectForm extends Component {
 
 	handleChange = event => {
 		const { name, value } = event.target;
-
+		console.log(value)
 		this.setState({
 			[name]: value
 		});
 	};
 
 	handleSubmit = event => {
+		console.log('handleSubmit')
 		event.preventDefault();
-
-		// const {title, description} = this.state
-
+		
 		axios
-			.post("/api/projects", {
-				title: this.state.title,
-				description: this.state.description
-			})
-			.then(() => {
-				this.props.refreshList();
-				this.setState({
-					title: "",
-					description: ""
-				});
-			})
-			.catch(err => {
-				console.log(err);
+		.post("/", {
+			title: this.state.title,
+			description: this.state.description
+		})
+		.then(() => {
+			// this.props.refreshList();
+			this.setState({
+				title: "",
+				description: ""
 			});
+		})
+		.catch(err => {
+			console.log(err);
+		});
 	};
 
 	render() {

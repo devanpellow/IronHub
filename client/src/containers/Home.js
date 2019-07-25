@@ -10,7 +10,6 @@ export class Home extends Component {
 	render() {
 		return (
 			<div className="home">
-			<h1>IRONHUB - correct config</h1>
 				<div className="home-logo">
           <img src="/../images/ironhub-logo.svg" alt="IronHub" />
 				</div>
