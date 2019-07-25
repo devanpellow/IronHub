@@ -1,6 +1,13 @@
+/* Imports */
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
+
 /* Nav Bar */
 #nav-container {
 	border-bottom: 1px rgb(30, 35, 53) solid;
+}
+
+body {
+	font-family: "Roboto Mono", monospace;
 }
 
 /* Home Page (Landing Page) */
