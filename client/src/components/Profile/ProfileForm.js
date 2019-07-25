@@ -99,12 +99,18 @@ export default class ProfileForm extends Component {
         
         <Form.Group>
         <Form.Label>State</Form.Label>
-        <Form.Control as="select">
+        <Form.Control 
+          as="select"
+          onChange={this.handleChange}
+          type=""
+          name="location"
+          id="location"
+            value={this.state.linkedin}>
           <option>Choose...</option>
-          <option>Berlin</option>
-          <option>Paris</option>
-          <option>Madrid</option>
-          <option>Lisbon</option>
+          <option value="berlin">Berlin</option>
+          <option value="paris">Paris</option>
+          <option value="madrid">Madrid</option>
+          <option value="lisbon">Lisbon</option>
         </Form.Control>
       
         </Form.Group>
