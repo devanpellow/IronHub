@@ -9,7 +9,7 @@ import Profile from "./containers/Profile";
 import Project from "./containers/Project";
 import Notfound from "./components/notfound";
 import Home from "./containers/Home";
-import DevanSucks from "./containers/DevanSucks"
+
 
 const routing = (
   <Router>
@@ -19,7 +19,6 @@ const routing = (
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/project" component={Project} />
         <Route exact path="/home" component={Home} />
-        <Route exact path="/devansucks" component={DevanSucks}/>
         <Route component={Notfound} />
       </Switch>
     </div>
