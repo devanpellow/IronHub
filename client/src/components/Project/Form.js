@@ -5,36 +5,39 @@ import { Form, Button } from "react-bootstrap";
 export default class ProjectForm extends Component {
 	state = {
 		title: "",
+		projectURL: "",
 		description: ""
 	};
 
 	handleChange = event => {
 		const { name, value } = event.target;
-		console.log(value)
+		console.log(value);
 		this.setState({
 			[name]: value
 		});
 	};
 
 	handleSubmit = event => {
-		console.log('handleSubmit')
+		console.log("handleSubmit");
 		event.preventDefault();
-		
+
 		axios
-		.post("/", {
-			title: this.state.title,
-			description: this.state.description
-		})
-		.then(() => {
-			// this.props.refreshList();
-			this.setState({
-				title: "",
-				description: ""
+			.post("/", {
+				title: this.state.title,
+				projectURL: this.state.projectURL,
+				description: this.state.description
+			})
+			.then(() => {
+				// this.props.refreshList();
+				this.setState({
+					title: "",
+					projectURL: "",
+					description: ""
+				});
+			})
+			.catch(err => {
+				console.log(err);
 			});
-		})
-		.catch(err => {
-			console.log(err);
-		});
 	};
 
 	render() {
@@ -51,6 +54,16 @@ export default class ProjectForm extends Component {
 						id="title"
 						name="title"
 						value={this.state.title}
+					/>
+				</Form.Group>
+				<Form.Group>
+					<Form.Label htmlFor="projectURL">URL: </Form.Label>
+					<Form.Control
+						onChange={this.handleChange}
+						type="text"
+						name="projectURL"
+						id="projectURL"
+						value={this.state.projectURL}
 					/>
 				</Form.Group>
 				<Form.Group>

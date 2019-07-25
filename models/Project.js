@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const projectSchema = new Schema(
   {
     title: String,
+    projectURL: String,
     description: String,
-    // url: String,
     // technologies: String,
     // project: Number,
     // displaypicture: String

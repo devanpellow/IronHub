@@ -8,9 +8,9 @@ router.get('/', (req, res, next) => {
 });
 
 router.post("/", (req, res) => {
-  const { title, description } = req.body;
+  const { title, projectURL, description } = req.body;
   console.log(req.body)
-  Project.create({ title, description})
+  Project.create({ title, projectURL, description})
     .then(project => {
       res.json(project);
     })
