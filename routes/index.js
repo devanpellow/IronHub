@@ -1,16 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const Project = require("../models/Project");
+const User = require("../models/User");
 
 /* GET home page */
-router.get('/', (req, res, next) => {
-  res.render('index');
+router.get("/", (req, res, next) => {
+  res.render("index");
 });
 
 router.post("/", (req, res) => {
   const { title, description } = req.body;
-  console.log(req.body)
-  Project.create({ title, description})
+  console.log(req.body);
+  Project.create({ title, description })
     .then(project => {
       res.json(project);
     })
@@ -19,5 +20,16 @@ router.post("/", (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+  const { name, bio, github, linkedin, location, skills } = req.body;
+  console.log(req.body);
+  User.create({ title, description })
+    .then(user => {
+      res.json(user);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
 
 module.exports = router;
