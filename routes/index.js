@@ -9,9 +9,9 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/profile", (req, res) => {
-	const { title, projectURL, description } = req.body;
+	const { title, projectURL, description, module } = req.body;
 	console.log(req.body);
-	Project.create({ title, projectURL, description })
+	Project.create({ title, projectURL, description, module })
 		.then(project => {
 			res.json(project);
 		})
