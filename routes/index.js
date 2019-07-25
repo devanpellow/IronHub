@@ -8,10 +8,10 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
-router.post("/", (req, res) => {
-  const { title, description } = req.body;
-  console.log(req.body);
-  Project.create({ title, description })
+router.post("/profile", (req, res) => {
+  const { title, projectURL, description } = req.body;
+  console.log(req.body)
+  Project.create({ title, projectURL, description})
     .then(project => {
       res.json(project);
     })

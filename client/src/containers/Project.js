@@ -7,6 +7,7 @@ export class Project extends Component {
       <div>
         <div>
           <Nav />
+  
         </div>
       </div>
     );

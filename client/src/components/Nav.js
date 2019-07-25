@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import Container from "react-bootstrap/Container";
 
@@ -20,7 +21,7 @@ export default function Nav() {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end nav-btns">
             <Button variant="link">Login</Button>
-            <Button variant="link">Submit Your Projects</Button>
+            <Link to="/profile"><Button variant="link">Profile</Button></Link>
           </Navbar.Collapse>
         </Navbar>
       </Container>
