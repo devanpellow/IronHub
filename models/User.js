@@ -8,9 +8,12 @@ const userSchema = new Schema({
   bio: String,
   github: String,
   linkedin: String,
-  location: String,
+  location: {
+    type: String,
+    enum: ['Berlin', 'Lisbon', 'Paris', 'Madrid']
+  }
   skills: String,
-  projects: []
+  // projects: []
 }, {
   timestamps: {
     createdAt: 'created_at',

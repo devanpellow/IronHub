@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Form, Button } from "react-bootstrap";
 
-export default class ProjectForm extends Component {
+export default class ProfileForm extends Component {
   state = {
     name: "",
     bio: "",
@@ -25,7 +25,7 @@ export default class ProjectForm extends Component {
     event.preventDefault();
 
     axios
-      .post("/profile", {
+      .put("/profile", {
         name: this.state.name,
         bio: this.state.bio,
         github: this.state.github,
@@ -34,14 +34,15 @@ export default class ProjectForm extends Component {
         skills: this.state.skills
       })
       .then(() => {
+        
         // this.props.refreshList();
         this.setState({
-          name: "",
-          bio: "",
-          github: "",
-          linkedin: "",
-          location: "",
-          skills: ""
+          // name: "",
+          // bio: "",
+          // github: "",
+          // linkedin: "",
+          // location: "",
+          // skills: ""
         });
       })
       .catch(err => {
@@ -95,15 +96,17 @@ export default class ProjectForm extends Component {
             value={this.state.linkedin}
           />
         </Form.Group>
+        
         <Form.Group>
-          <Form.Label htmlFor="location">Location: </Form.Label>
-          <Form.Control
-            onChange={this.handleChange}
-            type="text"
-            name="location"
-            id="location"
-            value={this.state.location}
-          />
+        <Form.Label>State</Form.Label>
+        <Form.Control as="select">
+          <option>Choose...</option>
+          <option>Berlin</option>
+          <option>Paris</option>
+          <option>Madrid</option>
+          <option>Lisbon</option>
+        </Form.Control>
+      
         </Form.Group>
         <Form.Group>
           <Form.Label htmlFor="skills">Skills: </Form.Label>
