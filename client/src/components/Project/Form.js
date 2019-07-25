@@ -25,14 +25,16 @@ export default class ProjectForm extends Component {
 			.post("/profile", {
 				title: this.state.title,
 				projectURL: this.state.projectURL,
-				description: this.state.description
+				description: this.state.description,
+				module: this.state.module
 			})
 			.then(() => {
 				// this.props.refreshList();
 				this.setState({
 					title: "",
 					projectURL: "",
-					description: ""
+					description: "",
+					module: ""
 				});
 			})
 			.catch(err => {
@@ -43,6 +45,22 @@ export default class ProjectForm extends Component {
 	render() {
 		return (
 			<Form onSubmit={this.handleSubmit}>
+				<Form.Group>
+					<Form.Label>Module:</Form.Label>
+					<Form.Control
+						as="select"
+						onChange={this.handleChange}
+						type=""
+						name="module"
+						id="module"
+						value={this.state.module}
+					>
+						<option>Choose...</option>
+						<option value="1">Module 1</option>
+						<option value="2">Module 2</option>
+						<option value="3">Module 3</option>
+					</Form.Control>
+				</Form.Group>
 				{/* all groups (label + input) are grouped in a Form.Group */}
 				<Form.Group>
 					{/* <label></label> */}
@@ -56,16 +74,7 @@ export default class ProjectForm extends Component {
 						value={this.state.title}
 					/>
 				</Form.Group>
-				<Form.Group>
-					<Form.Label htmlFor="projectURL">URL: </Form.Label>
-					<Form.Control
-						onChange={this.handleChange}
-						type="text"
-						name="projectURL"
-						id="projectURL"
-						value={this.state.projectURL}
-					/>
-				</Form.Group>
+
 				<Form.Group>
 					<Form.Label htmlFor="description">Description: </Form.Label>
 					<Form.Control
@@ -74,6 +83,17 @@ export default class ProjectForm extends Component {
 						name="description"
 						id="description"
 						value={this.state.description}
+					/>
+				</Form.Group>
+
+				<Form.Group>
+					<Form.Label htmlFor="projectURL">Project URL: </Form.Label>
+					<Form.Control
+						onChange={this.handleChange}
+						type="text"
+						name="projectURL"
+						id="projectURL"
+						value={this.state.projectURL}
 					/>
 				</Form.Group>
 
