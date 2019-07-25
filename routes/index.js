@@ -7,7 +7,7 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-router.post("/", (req, res) => {
+router.post("/profile", (req, res) => {
   const { title, projectURL, description } = req.body;
   console.log(req.body)
   Project.create({ title, projectURL, description})

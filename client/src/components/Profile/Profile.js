@@ -5,6 +5,7 @@ export class Profile extends Component {
     return (
       <div>
         <Nav />
+        
       </div>
     );
   }

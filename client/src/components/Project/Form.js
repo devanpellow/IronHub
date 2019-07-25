@@ -22,7 +22,7 @@ export default class ProjectForm extends Component {
 		event.preventDefault();
 
 		axios
-			.post("/", {
+			.post("/profile", {
 				title: this.state.title,
 				projectURL: this.state.projectURL,
 				description: this.state.description
