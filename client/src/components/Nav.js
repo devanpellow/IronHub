@@ -20,9 +20,15 @@ export default function Nav() {
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end nav-btns">
-            <Button variant="link">Login</Button>
-            <Link to="/profile"><Button variant="link">Profile</Button></Link>
-            <Link to="/signup"><Button variant="link">Signup</Button></Link>
+            <Link to="/login">
+              <Button variant="link">Login</Button>
+            </Link>
+            <Link to="/profile">
+              <Button variant="link">Profile</Button>
+            </Link>
+            <Link to="/signup">
+              <Button variant="link">Signup</Button>
+            </Link>
           </Navbar.Collapse>
         </Navbar>
       </Container>
