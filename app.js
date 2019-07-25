@@ -92,6 +92,9 @@ app.use("/", index);
 const authRoutes = require("./routes/auth");
 app.use("/auth", authRoutes);
 
+const profileRoutes = require("./routes/Profile/profile")
+app.use('/profile', profileRoutes)
+
 app.use("/api", require("./routes/image"));
 app.use("/api", require("./routes/image-upload"));
 
