@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 
-export class Profile extends Component {
+export default class DevanSucks extends Component {
   render() {
     return (
       <div>
-        <Nav />
-        
+        <h1>Devan Sucks!</h1>
       </div>
     );
   }
 }
-
-export default Profile;
