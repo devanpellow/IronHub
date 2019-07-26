@@ -8,27 +8,7 @@ export class ProjectList extends Component {
     projectURL: ""
   };
 
-  // getProjectURL = () => {
-  //   const projectId = this.props.match.params.id;
-
-  //   return axios
-  //     .get(`/api/tasks/${projectId}`)
-  //     .then(response => {
-  //       const { projectURL } = response.data;
-  //       this.setState({ projectURL });
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // };
-
-  // componentDidMount() {
-  //   this.getProjectURL();
-  // }
-
   render() {
-    //const url = this.state.projectURL;
-
     return (
       <div>
         <Card style={{ width: "18rem" }}>
