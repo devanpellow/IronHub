@@ -35,7 +35,8 @@ export class ProjectList extends Component {
           <Card.Body>
             <img src="/../images/ironhub-logo.svg" alt="IronHub" />
             <Card.Text>A Web App to do something cool.</Card.Text>
-            <Card.Link href="#">Project Details</Card.Link>
+            <Card.Link>Project Details</Card.Link>
+            <Card.Link href="#">Visit Site</Card.Link>
           </Card.Body>
         </Card>
       </div>
