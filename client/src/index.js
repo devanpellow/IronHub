@@ -21,7 +21,7 @@ const routing = (
         <Route exact path="/login" component={Login} />
         <Route exact path="/logout"  component={Logout}/>
         <Route exact path="/profile" component={Profile} />
-        <Route exact path="/project" component={Project} />
+        <Route path={"/project/:id"} component={Project} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/signup" component={Signup} />
         <Route component={Notfound} />

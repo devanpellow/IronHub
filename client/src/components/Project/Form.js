@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Form, Button } from "react-bootstrap";
+import AddImage from "../AddImage";
+// import service from ".../api/service";
 
 export default class ProjectForm extends Component {
   state = {
     title: "",
     projectURL: "",
-    description: ""
+    description: "",
+    module: "",
+    imageUrl: ""
   };
 
   handleChange = event => {
@@ -53,6 +57,11 @@ export default class ProjectForm extends Component {
       });
   };
 
+  // this method handles just the file upload
+  handleFileUpload = imageUrl => {
+    this.setState({ imageUrl: imageUrl });
+  };
+
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
@@ -67,9 +76,9 @@ export default class ProjectForm extends Component {
             value={this.state.module}
           >
             <option>Choose...</option>
-            <option value="1">Module 1</option>
-            <option value="2">Module 2</option>
-            <option value="3">Module 3</option>
+            <option value="1">Frontend</option>
+            <option value="2">Backend</option>
+            <option value="3">React</option>
           </Form.Control>
         </Form.Group>
         {/* all groups (label + input) are grouped in a Form.Group */}
@@ -107,7 +116,8 @@ export default class ProjectForm extends Component {
             value={this.state.projectURL}
           />
         </Form.Group>
-
+        <AddImage onImageChange={this.handleFileUpload} />
+        {this.state.imageUrl && <img src={this.state.imageUrl} />}
         <Button type="submit">Add Project</Button>
       </Form>
     );

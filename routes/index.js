@@ -20,5 +20,18 @@ router.post("/profile", (req, res) => {
 		});
 });
 
+router.get("/project/:id", (req, res) => {
+	const { id } = req.params;
+	console.log(req.body);
+	Project.findById({ _id:id })
+		.then(project => {
+			console.log(project)
+			res.json(project);
+		})
+		.catch(err => {
+			res.json(err);
+		});
+});
+
 
 module.exports = router;
