@@ -66,7 +66,6 @@ router.post("/login", (req, res) => {
 					.status(500)
 					.json({ message: "Error while attempting to login" });
 			}
-
 			return res.status(200).json(user);
 		});
 	})(req, res);

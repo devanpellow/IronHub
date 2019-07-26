@@ -1,8 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font-family: "Roboto Mono", monospace; }
 
 a {
-  color: #00B7FF; }
+  color: #00b7ff; }
 
 /*# sourceMappingURL=style.css.map */

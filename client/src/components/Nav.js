@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+
 import Container from "react-bootstrap/Container";
 
 export default function Nav() {
@@ -28,6 +29,9 @@ export default function Nav() {
             </Link>
             <Link to="/signup">
               <Button variant="link">Signup</Button>
+            </Link>
+            <Link to="/logout">
+              <Button variant="link">Logout</Button>
             </Link>
           </Navbar.Collapse>
         </Navbar>
