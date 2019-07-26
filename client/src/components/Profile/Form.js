@@ -34,7 +34,6 @@ export default class ProfileForm extends Component {
 				skills: this.state.skills
 			})
 			.then(() => {
-				// this.props.refreshList();
 				this.setState({
 					// name: "",
 					// bio: "",
@@ -95,22 +94,22 @@ export default class ProfileForm extends Component {
 						value={this.state.linkedin}
 					/>
 				</Form.Group>
-
+	
 				<Form.Group>
-					<Form.Label>State</Form.Label>
+					<Form.Label>Campus:</Form.Label>
 					<Form.Control
 						as="select"
 						onChange={this.handleChange}
-						type=""
+						type="text"
 						name="location"
 						id="location"
-						value={this.state.linkedin}
+						value={this.state.location}
 					>
 						<option>Choose...</option>
 						<option value="berlin">Berlin</option>
-						<option value="paris">Paris</option>
-						<option value="madrid">Madrid</option>
 						<option value="lisbon">Lisbon</option>
+						<option value="madrid">Madrid</option>
+						<option value="paris">Paris</option>
 					</Form.Control>
 				</Form.Group>
 				<Form.Group>
