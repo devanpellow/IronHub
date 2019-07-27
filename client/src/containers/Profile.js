@@ -1,16 +1,52 @@
 import React, { Component } from "react";
 import Nav from "../components/Nav";
-import ProfileForm from "../components/Profile/Form";
-import ProjectForm from "../components/Project/Form"
+import axios from "axios";
+// import ProfileForm from "../components/Profile/Form";
+// import ProjectForm from "../components/Project/Form";
 
 export default class Profile extends Component {
-  render() {
-    return (
-      <div>
-        <Nav />
-        <ProfileForm />
-        <ProjectForm />
-      </div>
-    );
-  }
+	state = {
+		name: "",
+		bio: "",
+		github: "",
+		linkedin: ""
+	};
+
+	getUser = () => {
+		console.log("params", this.props.params);
+		// ! create global state object somewhere so you can access userid to fetch the actual user profile when authenticated.
+		// const userId = this.props.params.id;
+		// return axios
+		// .get(`/profile`, {
+		//   user: {
+		//     id: userId
+		//   }
+		// })
+		// .then(response => {
+		//   const { name, bio, github, linkedin } = response.data
+		//   this.setState({ name, bio, github, linkedin })
+		// })
+		// .catch(err =>{
+		//   console.log(err)
+		// })
+	};
+
+	componentDidMount() {
+		this.getUser();
+	}
+
+	render() {
+		return (
+			<div>
+				<Nav />
+				<h1>Profile Page:</h1>
+
+				{/* 
+          move these to edit/route then redirect on submit
+          <ProfileForm />
+          <ProjectForm />
+        */}
+			</div>
+		);
+	}
 }
