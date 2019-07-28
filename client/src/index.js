@@ -12,21 +12,21 @@ import Home from "./containers/Home";
 import Signup from "./containers/Signup";
 import Login from "./containers/Login";
 import Logout from "./containers/Logout";
+import Nav from "./components/Nav";
 
 const routing = (
   <Router>
-    <div>
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/logout"  component={Logout}/>
-        <Route exact path="/profile" component={Profile} />
-        <Route path={"/project/:id"} component={Project} />
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/signup" component={Signup} />
-        <Route component={Notfound} />
-      </Switch>
-    </div>
+    <Route component={Nav} />
+    <Switch>
+      <Route exact path="/" component={App} />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/logout" component={Logout} />
+      <Route exact path="/profile" component={Profile} />
+      <Route path={"/project/:id"} component={Project} />
+      <Route exact path="/home" component={Home} />
+      <Route exact path="/signup" component={Signup} />
+      <Route component={Notfound} />
+    </Switch>
   </Router>
 );
 

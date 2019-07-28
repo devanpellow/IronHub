@@ -19,27 +19,10 @@ export default class Logout extends Component {
     });
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-
-    axios
-      .post("/auth/logout", {
-        username: this.state.username,
-        password: this.state.password
-      })
-      .then(user => {
-        console.log(user);
-        this.props.history.push("/profile");
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
+  
   render() {
     return (
       <>
-        <Nav />
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
             <Form.Label htmlFor="username">Username:</Form.Label>

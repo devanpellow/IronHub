@@ -29,7 +29,6 @@ export class Project extends Component {
 		return (
 			<div>
 				<div>
-					<Nav />
 					<h1>Project Details Page</h1>
 					<h1>Project Title: {this.state.title}</h1>
 					<p>Project ID: {this.props.match.params.id}</p>

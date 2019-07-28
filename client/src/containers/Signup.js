@@ -39,7 +39,6 @@ export default class Signup extends Component {
 	render() {
 		return (
 			<>
-				<Nav />
 				<Form onSubmit={this.handleSubmit}>
 					<Form.Group>
 						<Form.Label htmlFor="username">Username:</Form.Label>
