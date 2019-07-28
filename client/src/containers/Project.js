@@ -31,6 +31,7 @@ export class Project extends Component {
 				<div>
 					<h1>Project Details Page</h1>
 					<h1>Project Title: {this.state.title}</h1>
+					<h1>Project Description: {this.state.description}</h1>
 					<p>Project ID: {this.props.match.params.id}</p>
 				</div>
 			</div>

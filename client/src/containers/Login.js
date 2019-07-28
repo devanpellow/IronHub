@@ -28,6 +28,7 @@ export default class Login extends Component {
         password: this.state.password
       })
       .then(user => {
+        // ! set user details somewhere so you have access to user details/id to make further requests
         console.log(user);
         this.props.history.push("/profile");
       })
