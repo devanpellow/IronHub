@@ -11,7 +11,7 @@ export class Home extends Component {
 		return (
 			<div className="home">
 				<div className="home-logo">
-          <img src="/../images/ironhub-logo.svg" alt="IronHub" />
+          <img src="/../images/IRONHUBLOGO.png" alt="IronHub" />
 				</div>
 				<div className="search-input">
 					<Form.Control

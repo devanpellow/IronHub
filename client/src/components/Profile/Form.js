@@ -4,12 +4,12 @@ import { Form, Button } from "react-bootstrap";
 
 export default class ProfileForm extends Component {
 	state = {
-		name: this.props.name,
-		bio: this.props.bio,
-		github: this.props.github,
-		linkedin: this.props.linkedin,
-		location: this.props.location,
-		skills: this.props.skills
+		name: this.props.user.name,
+		bio: this.props.user.bio,
+		github: this.props.user.github,
+		linkedin: this.props.user.linkedin,
+		location: this.props.user.location,
+		skills: this.props.user.skills
 	};
 
 	handleChange = event => {

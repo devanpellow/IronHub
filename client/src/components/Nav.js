@@ -2,8 +2,6 @@ import React from "react";
 import { Navbar, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { logout } from "../api/service";
-
-
 import Container from "react-bootstrap/Container";
 
 const handleSubmit = (props) => {
@@ -19,7 +17,7 @@ const Nav = props => {
 				<Navbar>
 					<Navbar.Brand href="/">
 						<img
-							src="/images/ironhub-logo.svg"
+							src="/images/IRONHUBLOGO.png"
 							width="50"
 							height="50"
 							className="d-inline-block align-top"

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ProfileForm from "../components/Profile/Form";
 import ProjectForm from "../components/Project/Form";
-// import ProjectForm from "../components/Project/Form";
 
 export default class Profile extends Component {
 	state = {
@@ -11,11 +10,13 @@ export default class Profile extends Component {
 
 	displayEditForm = () => {
 		this.setState({
-			displayEditForm: !this.state.displayEditForm
+			displayEditForm: !this.state.displayEditForm,
+			displayProjectForm: false
 		});
 	};
 	displayProjectForm = () => {
 		this.setState({
+			displayEditForm: false,
 			displayProjectForm: !this.state.displayProjectForm
 		});
 	};
@@ -27,6 +28,13 @@ export default class Profile extends Component {
 		return (
 			<div>
 				<h1>Profile Page:</h1>
+				<h1>Name: {name}</h1>
+				<h1>Campus: {location}</h1>
+				<h1>Bio: {bio}</h1>
+				<h1>Github: {github}</h1>
+				<h1>linkedin: {linkedin}</h1>
+				<h1>Skills: {skills}</h1>
+				<h1>Game:{projects && projects[0]}</h1>
 				<button onClick={this.displayEditForm}>Edit Profile</button>
 				{this.state.displayEditForm ? (
 					<ProfileForm
@@ -36,13 +44,6 @@ export default class Profile extends Component {
 				<button onClick={this.displayProjectForm}>Add Project</button>
 				{this.state.displayProjectForm ? <ProjectForm /> : null}
 				
-				<h1>Name: {name}</h1>
-				<h1>Campus: {location}</h1>
-				<h1>Bio: {bio}</h1>
-				<h1>Github: {github}</h1>
-				<h1>linkedin: {linkedin}</h1>
-				<h1>Skills: {skills}</h1>
-				<h1>Game:{projects && projects[0]}</h1>
 			</div>
 		);
 	}
