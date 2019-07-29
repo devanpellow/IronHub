@@ -12,6 +12,8 @@ export default class ProfileForm extends Component {
 		skills: ""
 	};
 
+	
+
 	handleChange = event => {
 		const { name, value } = event.target;
 		console.log(value);

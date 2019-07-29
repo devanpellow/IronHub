@@ -1,24 +1,24 @@
 import React from "react";
 import { Navbar, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
 import Container from "react-bootstrap/Container";
 
 export default function Nav(props) {
-	const handleSubmit = (event, history) => {
-		event.preventDefault();
+	// const handleSubmit = (event, history) => {
+	// 	event.preventDefault();
 
-		axios
-			.get("/auth/logout")
-			.then(data => {
-				console.log(data);
-				history.push("/");
-			})
-			.catch(err => {
-				console.log("lul", err);
-			});
-	};
+	// 	axios
+	// 		.get("/auth/logout")
+	// 		.then(data => {
+	// 			console.log(data);
+	// 			history.push("/");
+	// 		})
+	// 		.catch(err => {
+	// 			console.log("lul", err);
+	// 		});
+	// };
 
 	return (
 		<div>

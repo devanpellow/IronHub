@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
-import Nav from "../components/Nav";
 import axios from "axios";
 // import { signup } from "../services/api";
 
@@ -13,7 +12,6 @@ export default class Login extends Component {
 
   handleChange = event => {
     const { name, value } = event.target;
-
     this.setState({
       [name]: value
     });
@@ -23,13 +21,13 @@ export default class Login extends Component {
     event.preventDefault();
 
     axios
-      .post("/auth/login", {
+      .post("/api/auth/login", {
         username: this.state.username,
         password: this.state.password
       })
       .then(user => {
-        // ! set user details somewhere so you have access to user details/id to make further requests
         console.log(user);
+        this.props.setUser(user);
         this.props.history.push("/profile");
       })
       .catch(err => {
