@@ -33,7 +33,6 @@ export default class ProjectForm extends Component {
         module: this.state.module
       })
       .then(newProject => {
-        console.log("//////////////", newProject.data);
         // this.props.refreshList();
 				const newData = newProject.data;
 				console.log("aloalosoaldo",newData)

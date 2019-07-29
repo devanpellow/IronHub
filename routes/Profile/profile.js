@@ -14,12 +14,13 @@ router.post("/", (req, res) => {
 		});
 });
 
-router.get("/profile", (req, res) => {
+router.get("/", (req, res) => {
 	console.log("/profile");
 	const id = req.user._id;
 
-	const user = User.findById({ _id:id }).then(user => {
-    console.log(user)
+	const user = User.findById({ _id:id })
+	.then(user => {
+    console.log("dababy",user)
     res.json(user);
   })
   .catch(err => {

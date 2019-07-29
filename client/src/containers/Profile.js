@@ -39,12 +39,7 @@ export default class Profile extends Component {
     return (
       <div>
         <h1>Profile Page:</h1>
-
-        {/* 
-          move these to edit/route then redirect on submit
-          <ProfileForm />
-          <ProjectForm />
-        */}
+        <h1>{this.props.user.username}</h1>
       </div>
     );
   }
