@@ -12,11 +12,8 @@ export default class ProfileForm extends Component {
 		skills: ""
 	};
 
-	
-
 	handleChange = event => {
 		const { name, value } = event.target;
-		console.log(value);
 		this.setState({
 			[name]: value
 		});
@@ -37,12 +34,6 @@ export default class ProfileForm extends Component {
 			})
 			.then(() => {
 				this.setState({
-					// name: "",
-					// bio: "",
-					// github: "",
-					// linkedin: "",
-					// location: "",
-					// skills: ""
 				});
 			})
 			.catch(err => {
@@ -53,11 +44,8 @@ export default class ProfileForm extends Component {
 	render() {
 		return (
 			<Form onSubmit={this.handleSubmit}>
-				{/* all groups (label + input) are grouped in a Form.Group */}
 				<Form.Group>
-					{/* <label></label> */}
 					<Form.Label htmlFor="name">Name: </Form.Label>
-					{/* <input /> */}
 					<Form.Control
 						type="text"
 						onChange={this.handleChange}

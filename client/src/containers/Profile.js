@@ -8,6 +8,8 @@ export default class Profile extends Component {
 		bio: "",
 		github: "",
 		linkedin: "",
+    location: "",
+    skills: '',
 		displayEditForm: false
 	};
 
@@ -15,30 +17,11 @@ export default class Profile extends Component {
 		this.setState({
 			displayEditForm: !this.state.displayEditForm
 		});
-	};
-
-	getUser = () => {
-		console.log("params", this.props.params);
-		// ! create global state object somewhere so you can access userid to fetch the actual user profile when authenticated.
-		// const userId = this.props.params.id;
-		// return axios
-		// .get(`/profile`, {
-		//   user: {
-		//     id: userId
-		//   }
-		// })
-		// .then(response => {
-		//   const { name, bio, github, linkedin } = response.data
-		//   this.setState({ name, bio, github, linkedin })
-		// })
-		// .catch(err =>{
-		//   console.log(err)
-		// })
-	};
-
-	componentDidMount() {
-		this.getUser();
-	}
+  };
+  
+  componentDidUpdate = () => {
+    console.log('did update')
+  }
 
 	render() {
 		return (
@@ -46,7 +29,12 @@ export default class Profile extends Component {
 				<h1>Profile Page:</h1>
 				<button onClick={this.displayEditForm}>Edit Profile</button>
 				{this.state.displayEditForm ? <ProfileForm /> : null}
-				<h1>{this.props.user.username}</h1>
+				<h1>Name: {this.props.user.name}</h1>
+				<h1>Campus: {this.props.user.location}</h1>
+				<h1>Bio: {this.props.user.bio}</h1>
+				<h1>Github: {this.props.user.github}</h1>
+				<h1>linkedin: {this.props.user.linkedin}</h1>
+				<h1>Skills: {this.props.user.skills}</h1>
 			</div>
 		);
 	}
