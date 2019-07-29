@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import ProfileForm from "../components/Profile/Form";
 import ProjectForm from "../components/Project/Form";
+// import ProjectForm from "../components/Project/Form";
+import LikeButton from "../components/LikeButton";
 
 export default class Profile extends Component {
-	state = {
-		displayEditForm: false,
-		displayProjectForm: false
-	};
+  state = {
+    displayEditForm: false,
+    displayProjectForm: false
+  };
 
 	displayEditForm = () => {
 		this.setState({
@@ -21,9 +23,9 @@ export default class Profile extends Component {
 		});
 	};
 
-	render() {
-		const { name, location, bio, github, linkedin, skills, projects } =
-			this.props.user || this.props.location.user;
+  render() {
+    const { name, location, bio, github, linkedin, skills, projects } =
+      this.props.user || this.props.location.user;
 
 		return (
 			<div>
@@ -43,7 +45,7 @@ export default class Profile extends Component {
 				) : null}
 				<button onClick={this.displayProjectForm}>Add Project</button>
 				{this.state.displayProjectForm ? <ProjectForm /> : null}
-				
+				<LikeButton />
 			</div>
 		);
 	}
