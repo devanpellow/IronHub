@@ -4,17 +4,16 @@ import { Form, Button } from "react-bootstrap";
 
 export default class ProfileForm extends Component {
 	state = {
-		name: "",
-		bio: "",
-		github: "",
-		linkedin: "",
-		location: "",
-		skills: ""
+		name: this.props.name,
+		bio: this.props.bio,
+		github: this.props.github,
+		linkedin: this.props.linkedin,
+		location: this.props.location,
+		skills: this.props.skills
 	};
 
 	handleChange = event => {
 		const { name, value } = event.target;
-		console.log(value);
 		this.setState({
 			[name]: value
 		});
@@ -34,14 +33,7 @@ export default class ProfileForm extends Component {
 				skills: this.state.skills
 			})
 			.then(() => {
-				this.setState({
-					// name: "",
-					// bio: "",
-					// github: "",
-					// linkedin: "",
-					// location: "",
-					// skills: ""
-				});
+				this.setState({});
 			})
 			.catch(err => {
 				console.log(err);
@@ -51,11 +43,8 @@ export default class ProfileForm extends Component {
 	render() {
 		return (
 			<Form onSubmit={this.handleSubmit}>
-				{/* all groups (label + input) are grouped in a Form.Group */}
 				<Form.Group>
-					{/* <label></label> */}
 					<Form.Label htmlFor="name">Name: </Form.Label>
-					{/* <input /> */}
 					<Form.Control
 						type="text"
 						onChange={this.handleChange}
@@ -94,7 +83,7 @@ export default class ProfileForm extends Component {
 						value={this.state.linkedin}
 					/>
 				</Form.Group>
-	
+
 				<Form.Group>
 					<Form.Label>Campus:</Form.Label>
 					<Form.Control

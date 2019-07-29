@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
-import Nav from "../components/Nav";
 import axios from "axios";
 // import { signup } from "../services/api";
 
@@ -23,12 +22,13 @@ export default class Signup extends Component {
 		event.preventDefault();
 
 		axios
-			.post("/auth/signup", {
+			.post("/api/auth/signup", {
 				username: this.state.username,
 				password: this.state.password
 			})
 			.then(user => {
 				console.log(user);
+				this.props.setUser(user);
 				this.props.history.push("/profile");
 			})
 			.catch(err => {

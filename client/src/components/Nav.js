@@ -1,25 +1,18 @@
 import React from "react";
 import { Navbar, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { logout } from "../api/service";
+
 
 import Container from "react-bootstrap/Container";
 
-export default function Nav(props) {
-	const handleSubmit = (event, history) => {
-		event.preventDefault();
+const handleSubmit = (props) => {
+	logout().then(() => {
+		props.setUser(null)
+	});
+};
 
-		axios
-			.get("/auth/logout")
-			.then(data => {
-				console.log(data);
-				history.push("/");
-			})
-			.catch(err => {
-				console.log("lul", err);
-			});
-	};
-
+const Nav = props => {
 	return (
 		<div>
 			<Container id="nav-container">
@@ -44,14 +37,14 @@ export default function Nav(props) {
 						<Link to="/signup">
 							<Button variant="link">Signup</Button>
 						</Link>
-				
+						<Link onClick={() => handleSubmit(props)} to="/">
+							Logout
+						</Link>
 					</Navbar.Collapse>
 				</Navbar>
 			</Container>
 		</div>
 	);
-}
+};
 
-		// <a onClick={e => handleSubmit(e, props.history)}>
-						// 	<Button variant="link">Logout</Button>
-						// </a>
+export default Nav;
