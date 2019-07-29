@@ -25,39 +25,31 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<Route component={Nav} />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Protected
-            exact
-            path="/signup"
-            redirectPath="/signup"
-            setUser={this.setUser}
-            user={!this.state.user}
-            component={Signup}
-          />
+				<Nav setUser={this.setUser} />
+				<Switch>
+					<Route exact path="/" component={Home} />
 					<Protected
-            exact
-            path="/login"
-            redirectPath="/login
-            "
-            setUser={this.setUser}
-            user={!this.state.user}
-            component={Login}
-          />
-          <Protected
-            exact
-            path="/profile"
-            redirectPath="/login"
-            user={this.state.user}
-            component={Profile}
-          />
-					<Route
+						exact
+						path="/signup"
+						redirectPath="/profile"
+						setUser={this.setUser}
+						user={!this.state.user}
+						component={Signup}
+					/>
+					<Protected
+						exact
+						path="/login"
+						redirectPath="/profile"
+						setUser={this.setUser}
+						user={!this.state.user}
+						component={Login}
+					/>
+					<Protected
 						exact
 						path="/profile"
-						render={props => (
-							<Profile user={this.state.user} {...props} />
-						)}
+						redirectPath="/login"
+						user={this.state.user}
+						component={Profile}
 					/>
 					<Route path={"/project/:id"} component={Project} />
 				</Switch>

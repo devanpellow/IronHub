@@ -1,25 +1,18 @@
 import React from "react";
 import { Navbar, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { logout } from "../api/service";
+
 
 import Container from "react-bootstrap/Container";
 
-export default function Nav(props) {
-	const handleSubmit = (event, history) => {
-		// event.preventDefault();
+const handleSubmit = (props) => {
+	logout().then(() => {
+		props.setUser(null)
+	});
+};
 
-		axios
-			.get("/auth/logout")
-			.then(data => {
-				console.log(data);
-				history.push("/");
-			})
-			.catch(err => {
-				console.log("lul", err);
-			});
-	};
-
+const Nav = props => {
 	return (
 		<div>
 			<Container id="nav-container">
@@ -52,4 +45,6 @@ export default function Nav(props) {
 			</Container>
 		</div>
 	);
-}
+};
+
+export default Nav;
