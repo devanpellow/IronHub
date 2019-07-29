@@ -4,8 +4,8 @@ const Project = require("../../models/Project");
 const User = require("../../models/User");
 
 router.post("/", (req, res) => {
-	const { title, projectURL, description } = req.body;
-	Project.create({ title, projectURL, description })
+	const { title, projectUrl, description, module } = req.body;
+	Project.create({ title, projectUrl, description, module })
 		.then(project => {
 			res.json(project);
 		})

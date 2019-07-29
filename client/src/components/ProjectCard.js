@@ -5,7 +5,7 @@ import { Card } from "react-bootstrap";
 
 export class ProjectList extends Component {
   state = {
-    projectURL: ""
+    projectUrl: ""
   };
 
   render() {

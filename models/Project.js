@@ -4,15 +4,15 @@ const Schema = mongoose.Schema;
 const projectSchema = new Schema(
   {
     title: String,
-    projectURL: String,
-    rojectURL: String,
-    moduleNumber: Number
-    // technologies: String,
-    // displaypicture: String
-  },
-  {
-    timestamps: true
+    projectUrl: String,
+    module: String,
+    description: String
+    
   }
+  // ,
+  // {
+  //   timestamps: true
+  // }
 );
 
 const Project = mongoose.model("Project", projectSchema);
