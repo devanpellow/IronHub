@@ -1,36 +1,34 @@
 import React, { Component } from "react";
 import { Form } from "react-bootstrap";
 import axios from "axios";
-import ProjectCard from '../components/ProjectCard'
+import ProjectCard from "../components/ProjectCard";
 // import LikeButton from "../components/LikeButton";
 
 export class Home extends Component {
 	state = {
 		search: "",
-		projects: []
+		allProjects: [],
+		filteredProjects: []
 	};
 
 	handleSubmit = event => {
 		event.preventDefault();
-		this.setState({search:event.target.value});
-		console.log(this.state.projects)
+		this.setState({ search: event.target.value });
+		let filteredProjectsArr = this.state.allProjects.slice(0).filter((project) => {
+			return project.title.indexOf(event.target.value) !== -1
+		});
+		this.setState({filteredProjects: filteredProjectsArr})
 	};
-
-	componentDidMount(){
-		axios
-		.get("/projects")
-		.then((response)=>{
-			this.setState({projects:response.data})
-		})
+	
+	componentDidMount() {
+		axios.get("/projects").then(response => {
+			this.setState({ allProjects: response.data });
+		});
 	}
-
+	
 	render() {
-
-		// let filteredProjects = this.props.projects.filter(
-		// 	(project) =>{
-		// 		return project.name.indexOf(this.state.search) !== -1
-		// 	})
-
+		console.log(this.state.search)
+		console.log(this.state.filteredProjects)
 		return (
 			<div className="home">
 				<div className="home-logo">
@@ -47,9 +45,9 @@ export class Home extends Component {
 					/>
 				</div>
 				<br />
-				<>
-					<ProjectCard projects={this.state.projects}/>
-				</>
+				<div className="projectCardWrapper">
+					<ProjectCard allProjects={this.state.allProjects} filtered={this.state.filteredProjects} />
+				</div>
 			</div>
 		);
 	}

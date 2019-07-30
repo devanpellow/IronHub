@@ -39,6 +39,10 @@ body {
   margin-bottom: 30px;
 }
 
+.projectCardWrapper {
+ margin-top: 0px; 
+}
+
 .projectImg {
   width: auto;
   height: 100px;

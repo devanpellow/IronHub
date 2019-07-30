@@ -1,27 +1,66 @@
 import React from "react";
-import { Card, Link } from "react-bootstrap";
-// import { Link } from "react-router-dom'
+import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom"
 
 const ProjectCard = props => {
+
+  const projects = props.filtered.length > 0 ? props.filtered : props.allProjects
+
 	return (
 		<div>
-			{props.projects.length > 0 && <h1>Projects:</h1>}
+			
 
-			{props.projects.map(project => {
+			{projects.map(project => {
 				return (
-					<Card style={{ width: "18rem" }}>
+					<Card key={project._id} style={{ width: "18rem" }}>
 						<Card.Body>
-            <img className="projectImg" src={`${project.imageUrl}`} alt="project screenshot" />
+							<img
+								className="projectImg"
+								src={`${project.imageUrl}`}
+								alt="project screenshot"
+							/>
 							<Card.Text>{project.title}</Card.Text>
-              <a  href={project.projectUrl} rel="noopener noreferrer" target="_blank">Visit Site</a>
-              </Card.Body>
-              </Card>
-              );
+							<a
+								href={project.projectUrl}
+								rel="noopener noreferrer"
+								target="_blank"
+							>
+								Visit Site
+							</a>
+							<Link to={`/project/${project._id}`}>
+								Project Details
+							</Link>
+						</Card.Body>
+					</Card>
+				);
 			})}
-      </div>
+		</div>
 	);
 };
 
 export default ProjectCard;
 
-// <Link to={`/projects/${project._id}`}>Project Details</Link>
+// {props.filtered.map(project => {
+//   return (
+//     <Card style={{ width: "18rem" }}>
+//       <Card.Body>
+//         <img
+//           className="projectImg"
+//           src={`${project.imageUrl}`}
+//           alt="project screenshot"
+//         />
+//         <Card.Text>{project.title}</Card.Text>
+//         <a
+//           href={project.projectUrl}
+//           rel="noopener noreferrer"
+//           target="_blank"
+//         >
+//           Visit Site
+//         </a>
+//         <Link to={`/project/${project._id}`}>
+//           Project Details
+//         </Link>
+//       </Card.Body>
+//     </Card>
+//   );
+// })}
