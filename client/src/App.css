@@ -39,10 +39,9 @@ body {
   margin-bottom: 30px;
 }
 
-
 .btn-primary {
-  background-color: #23aa4e;
-  border-color: #177d37;
+  background-color: rgb(86, 196, 239);
+  border-color: white;
 }
 
 #example {

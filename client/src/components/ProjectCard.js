@@ -3,25 +3,23 @@ import { Card, Link } from "react-bootstrap";
 // import { Link } from "react-router-dom'
 
 const ProjectCard = props => {
-	return (
-		<div>
-			{props.projects.length > 0 && <h1>Projects:</h1>}
+  return (
+    <div>
+      {props.projects.length > 0 && <h1>Projects:</h1>}
 
-			{props.projects.map(project => {
-				return (
-					<Card style={{ width: "18rem" }}>
-						<Card.Body>
-            <img src="" alt="project screenshot" />
-							<Card.Text>{project.title}</Card.Text>
+      {props.projects.map(project => {
+        return (
+          <Card style={{ width: "18rem" }}>
+            <Card.Body>
+              <img src="" alt="project screenshot" />
+              <Card.Text>{project.title}</Card.Text>
               <a href={project.projectUrl}>Visit Site</a>
-              </Card.Body>
-              </Card>
-              );
-			})}
-      </div>
-	);
+            </Card.Body>
+          </Card>
+        );
+      })}
+    </div>
+  );
 };
 
 export default ProjectCard;
-
-// <Link to={`/projects/${project._id}`}>Project Details</Link>
