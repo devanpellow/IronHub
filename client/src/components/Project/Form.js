@@ -105,7 +105,6 @@ export default class ProjectForm extends Component {
           />
         </Form.Group>
 
-<<<<<<< HEAD
 				<Form.Group>
 					<Form.Label>Technologies Used:</Form.Label>
 					<Form.Control
@@ -168,22 +167,4 @@ export default class ProjectForm extends Component {
 			</Form>
 		);
 	}
-=======
-        <Form.Group>
-          <Form.Label htmlFor="projectUrl">Project URL: </Form.Label>
-          <Form.Control
-            onChange={this.handleChange}
-            type="text"
-            name="projectUrl"
-            id="projectUrl"
-            value={this.state.projectUrl}
-          />
-        </Form.Group>
-        <AddImage onImageChange={this.handleFileUpload} />
-        {this.state.imageUrl && <img src={this.state.imageUrl} />}
-        <Button type="submit">Add Project</Button>
-      </Form>
-    );
-  }
->>>>>>> 3a58fc7e03441a665ed6488487d19dd8af2885f4
 }
