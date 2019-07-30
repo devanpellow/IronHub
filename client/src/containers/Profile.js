@@ -40,7 +40,7 @@ export default class Profile extends Component {
         <h1>
           Projects:{" "}
           {projects.map(project => (
-            <Link to={`/project/${project._id}`}>{project.title}</Link>
+            <Link to={`/project/${project._id}`}>{project.title} </Link>
           ))}
         </h1>
         <button onClick={this.displayEditForm}>Edit Profile</button>

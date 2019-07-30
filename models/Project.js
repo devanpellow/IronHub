@@ -7,7 +7,8 @@ const projectSchema = new Schema(
     projectURL: String,
     rojectURL: String,
     module: Number,
-    imageUrl: String
+    imageUrl: String,
+    likes: Number
 
     // technologies: String,
     // displaypicture: String
