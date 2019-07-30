@@ -59,52 +59,53 @@ export default class ProjectForm extends Component {
 			});
 	};
 
-	// this method handles just the file upload
-	handleFileUpload = imageUrl => {
-		this.setState({ imageUrl: imageUrl });
-	};
+  // this method handles just the file upload
+  handleFileUpload = imageUrl => {
+    this.setState({ imageUrl: imageUrl });
+  };
 
-	render() {
-		return (
-			<Form onSubmit={this.handleSubmit}>
-				<Form.Group>
-					<Form.Label>Module:</Form.Label>
-					<Form.Control
-						as="select"
-						onChange={this.handleChange}
-						type="text"
-						name="module"
-						id="module"
-						value={this.state.module}
-					>
-						<option>Choose...</option>
-						<option value="Module 1">Module 1: Frontend</option>
-						<option value="Module 2">Module 2: Backend</option>
-						<option value="Module 3">Module 3: React</option>
-					</Form.Control>
-				</Form.Group>
-				<Form.Group>
-					<Form.Label htmlFor="title">Title: </Form.Label>
-					<Form.Control
-						type="text"
-						onChange={this.handleChange}
-						id="title"
-						name="title"
-						value={this.state.title}
-					/>
-				</Form.Group>
+  render() {
+    return (
+      <Form onSubmit={this.handleSubmit}>
+        <Form.Group>
+          <Form.Label>Module:</Form.Label>
+          <Form.Control
+            as="select"
+            onChange={this.handleChange}
+            type="text"
+            name="module"
+            id="module"
+            value={this.state.module}
+          >
+            <option>Choose...</option>
+            <option value="Module 1">Module 1: Frontend</option>
+            <option value="Module 2">Module 2: Backend</option>
+            <option value="Module 3">Module 3: React</option>
+          </Form.Control>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label htmlFor="title">Title: </Form.Label>
+          <Form.Control
+            type="text"
+            onChange={this.handleChange}
+            id="title"
+            name="title"
+            value={this.state.title}
+          />
+        </Form.Group>
 
-				<Form.Group>
-					<Form.Label htmlFor="description">Description: </Form.Label>
-					<Form.Control
-						onChange={this.handleChange}
-						type="text"
-						name="description"
-						id="description"
-						value={this.state.description}
-					/>
-				</Form.Group>
+        <Form.Group>
+          <Form.Label htmlFor="description">Description: </Form.Label>
+          <Form.Control
+            onChange={this.handleChange}
+            type="text"
+            name="description"
+            id="description"
+            value={this.state.description}
+          />
+        </Form.Group>
 
+<<<<<<< HEAD
 				<Form.Group>
 					<Form.Label>Technologies Used:</Form.Label>
 					<Form.Control
@@ -167,4 +168,22 @@ export default class ProjectForm extends Component {
 			</Form>
 		);
 	}
+=======
+        <Form.Group>
+          <Form.Label htmlFor="projectUrl">Project URL: </Form.Label>
+          <Form.Control
+            onChange={this.handleChange}
+            type="text"
+            name="projectUrl"
+            id="projectUrl"
+            value={this.state.projectUrl}
+          />
+        </Form.Group>
+        <AddImage onImageChange={this.handleFileUpload} />
+        {this.state.imageUrl && <img src={this.state.imageUrl} />}
+        <Button type="submit">Add Project</Button>
+      </Form>
+    );
+  }
+>>>>>>> 3a58fc7e03441a665ed6488487d19dd8af2885f4
 }

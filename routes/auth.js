@@ -72,6 +72,7 @@ router.post("/logout", (req, res) => {
 });
 
 router.get("/loggedin", (req, res) => {
+  console.log("user", req.user);
   res.json(req.user);
 });
 
