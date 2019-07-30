@@ -65,13 +65,14 @@ router.post("/login", (req, res) => {
   })(req, res);
 });
 
-router.get("/logout", (req, res) => {
+router.post("/logout", (req, res) => {
   req.logout();
   res.cookie("connect.sid", null);
   res.status(200).json({ message: "User was successfully logged out" });
 });
 
 router.get("/loggedin", (req, res) => {
+  console.log("user", req.user);
   res.json(req.user);
 });
 

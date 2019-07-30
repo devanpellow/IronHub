@@ -4,12 +4,12 @@ import { Form, Button } from "react-bootstrap";
 
 export default class ProfileForm extends Component {
 	state = {
-		name: "",
-		bio: "",
-		github: "",
-		linkedin: "",
-		location: "",
-		skills: ""
+		name: this.props.user.name,
+		bio: this.props.user.bio,
+		github: this.props.user.github,
+		linkedin: this.props.user.linkedin,
+		location: this.props.user.location,
+		skills: this.props.user.skills
 	};
 
 	handleChange = event => {
@@ -33,8 +33,7 @@ export default class ProfileForm extends Component {
 				skills: this.state.skills
 			})
 			.then(() => {
-				this.setState({
-				});
+				this.setState({});
 			})
 			.catch(err => {
 				console.log(err);
@@ -84,7 +83,7 @@ export default class ProfileForm extends Component {
 						value={this.state.linkedin}
 					/>
 				</Form.Group>
-	
+
 				<Form.Group>
 					<Form.Label>Campus:</Form.Label>
 					<Form.Control
@@ -96,10 +95,10 @@ export default class ProfileForm extends Component {
 						value={this.state.location}
 					>
 						<option>Choose...</option>
-						<option value="berlin">Berlin</option>
-						<option value="lisbon">Lisbon</option>
-						<option value="madrid">Madrid</option>
-						<option value="paris">Paris</option>
+						<option value="Berlin">Berlin</option>
+						<option value="Lisbon">Lisbon</option>
+						<option value="Madrid">Madrid</option>
+						<option value="Paris">Paris</option>
 					</Form.Control>
 				</Form.Group>
 				<Form.Group>

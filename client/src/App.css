@@ -3,38 +3,51 @@
 
 /* Nav Bar */
 #nav-container {
-	border-bottom: 1px rgb(30, 35, 53) solid;
+  border-bottom: 1px rgb(30, 35, 53) solid;
 }
 
 body {
-	font-family: "Roboto Mono", monospace;
+  font-family: "Roboto Mono", monospace;
 }
 
 /* Home Page (Landing Page) */
 .home {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 80vh;
 }
 
 .home-logo {
-	width: 100px;
-	padding-bottom: 50px;
+  width: 100px;
+  padding-bottom: 50px;
 }
 
 .search-input {
-	width: 30vw;
+  width: 30vw;
 }
 .search-input input {
-	text-align: center;
+  text-align: center;
 }
 
 .projectCards {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.btn-primary {
+  background-color: #23aa4e;
+  border-color: #177d37;
+}
+
+#example {
+  margin: 3rem;
+}
+
+.customContainer {
+  border: 1px;
 }
