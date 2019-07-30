@@ -8,6 +8,7 @@ export class Project extends Component {
     projectUrl: "",
     module: "",
     description: "",
+    imageUrl: "",
     liked: false,
     numberOfLikes: 0
   };
@@ -22,6 +23,7 @@ export class Project extends Component {
           projectUrl,
           module,
           description,
+          imageUrl,
           likedUser
         } = response.data;
         console.log(response.data);
@@ -32,6 +34,7 @@ export class Project extends Component {
           projectUrl,
           module,
           description,
+          imageUrl,
           liked,
           numberOfLikes
         });
@@ -71,7 +74,7 @@ export class Project extends Component {
           <h1>Project Description: {this.state.description}</h1>
           <p>Project ID: {this.props.match.params.id}</p>
           <p>
-            <img src={this.state.imageUrl} alt="" />
+            <img src={this.state.imageUrl} alt="project screenshot" />
           </p>
         </div>
         <p>{this.state.numberOfLikes}</p>
