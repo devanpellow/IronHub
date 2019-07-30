@@ -39,6 +39,11 @@ body {
   margin-bottom: 30px;
 }
 
+.projectImg {
+  width: auto;
+  height: 100px;
+}
+
 
 .btn-primary {
   background-color: #23aa4e;

@@ -11,9 +11,9 @@ const ProjectCard = props => {
 				return (
 					<Card style={{ width: "18rem" }}>
 						<Card.Body>
-            <img src="" alt="project screenshot" />
+            <img className="projectImg" src={`${project.imageUrl}`} alt="project screenshot" />
 							<Card.Text>{project.title}</Card.Text>
-              <a href={project.projectUrl}>Visit Site</a>
+              <a  href={project.projectUrl} rel="noopener noreferrer" target="_blank">Visit Site</a>
               </Card.Body>
               </Card>
               );
