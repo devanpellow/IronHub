@@ -3,18 +3,12 @@ const Schema = mongoose.Schema;
 
 const projectSchema = new Schema(
   {
-    title: String,
-    projectURL: String,
-    rojectURL: String,
-    module: Number,
+    title: { type: String, required: true },
+    projectUrl: { type: String, required: true },
+    module: { type: String, required: true },
+    description: { type: String, required: true },
     imageUrl: String,
-    likes: Number
-
-    // technologies: String,
-    // displaypicture: String
-  },
-  {
-    timestamps: true
+    likedUser: [{ type: Schema.Types.ObjectId, ref: "User" }]
   }
   // ,
   // {

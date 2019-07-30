@@ -29,27 +29,35 @@ export default class Profile extends Component {
       this.props.user || this.props.location.user;
 
     return (
-      <div>
-        <h1>Profile Page:</h1>
-        <h1>Name: {name}</h1>
-        <h1>Campus: {location}</h1>
-        <h1>Bio: {bio}</h1>
-        <h1>Github: {github}</h1>
-        <h1>linkedin: {linkedin}</h1>
-        <h1>Skills: {skills}</h1>
-        <h1>
-          Projects:{" "}
-          {projects.map(project => (
-            <Link to={`/project/${project._id}`}>{project.title} </Link>
-          ))}
-        </h1>
-        <button onClick={this.displayEditForm}>Edit Profile</button>
-        {this.state.displayEditForm ? (
-          <ProfileForm user={this.props.user || this.props.location.user} />
-        ) : null}
-        <button onClick={this.displayProjectForm}>Add Project</button>
-        {this.state.displayProjectForm ? <ProjectForm /> : null}
-        <LikeButton />
+      <div className="profileClass">
+        <div>
+          <h1>Profile Page:</h1>
+          <h1>Name: {name}</h1>
+          <h1>Campus: {location}</h1>
+          <h1>Bio: {bio}</h1>
+          <h1>Github: {github}</h1>
+          <h1>linkedin: {linkedin}</h1>
+          <h1>Skills: {skills}</h1>
+        </div>
+        <div className="projectDisplayProfile">
+          <h1>
+            Projects:{" "}
+            {projects.map(project => (
+              <Link to={`/project/${project._id}`}>
+                {project.title} <br />
+              </Link>
+            ))}
+          </h1>
+        </div>
+        <div>
+          <button onClick={this.displayEditForm}>Edit Profile</button>
+          {this.state.displayEditForm ? (
+            <ProfileForm user={this.props.user || this.props.location.user} />
+          ) : null}
+          <button onClick={this.displayProjectForm}>Add Project</button>
+          {this.state.displayProjectForm ? <ProjectForm /> : null}
+          <LikeButton />
+        </div>
       </div>
     );
   }

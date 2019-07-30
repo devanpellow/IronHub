@@ -3,7 +3,7 @@
 
 /* Nav Bar */
 #nav-container {
-  border-bottom: 1px rgb(30, 35, 53) solid;
+  border-bottom: 1px rgb(0, 0, 0) solid;
 }
 
 body {
@@ -50,4 +50,17 @@ body {
 
 .customContainer {
   border: 1px;
+}
+
+/* Profile Page */
+
+.profileClass {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80vw;
+}
+
+.projectDisplayProfile {
+  display: grid;
 }
