@@ -39,9 +39,9 @@ export default class Profile extends Component {
         <h1>Skills: {skills}</h1>
         <h1>
           Projects:{" "}
-          {projects.map(project => (
+    {/*  {projects.map(project => (
             <Link to={`/project/${project._id}`}>{project.title}</Link>
-          ))}
+    ))} */}
         </h1>
         <button onClick={this.displayEditForm}>Edit Profile</button>
         {this.state.displayEditForm ? (

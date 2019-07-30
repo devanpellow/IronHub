@@ -26,10 +26,13 @@ export default class Signup extends Component {
 				username: this.state.username,
 				password: this.state.password
 			})
-			.then(user => {
-				console.log(user);
-				this.props.setUser(user);
-				this.props.history.push("/profile");
+			.then(response => {
+				if (response.data.message) {
+					this.setState({ error: response.data.message });
+				} else {
+					this.props.setUser(response.data);
+					this.props.history.push("/profile");
+				}
 			})
 			.catch(err => {
 				console.log(err);
@@ -61,9 +64,7 @@ export default class Signup extends Component {
 						/>
 					</Form.Group>
 
-					{this.state.error && (
-						<Alert variant="warning">{this.state.error}</Alert>
-					)}
+					{this.state.error && <p>{this.state.error}</p>}
 
 					<Button type="submit">Signup</Button>
 				</Form>

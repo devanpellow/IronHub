@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Form } from "react-bootstrap";
-import LikeButton from "../components/LikeButton";
+// import LikeButton from "../components/LikeButton";
 
 export class Home extends Component {
   state = {
