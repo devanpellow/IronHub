@@ -40,12 +40,35 @@ router.get("/project/:id", (req, res) => {
 	Project.findById({ _id: id })
 		.then(project => {
 			console.log(project);
-			console.log("laflare 1017 brick squad");
 			res.json(project);
 		})
 		.catch(err => {
 			res.json(err);
 		});
+});
+
+router.put("/project/:id", (req, res) => {
+	const { user } = req.body;
+	const id = req.params.id;
+	Project.findById(id).then(project => {
+		if (project.likedUser.includes(user)) {
+			Project.findByIdAndUpdate(
+				id,
+				{ $pull: { likedUser: user } },
+				{ new: true }
+			).then(project => {
+				res.json(project);
+			});
+		} else {
+			Project.findByIdAndUpdate(
+				id,
+				{ $push: { likedUser: user } },
+				{ new: true }
+			).then(project => {
+				res.json(project);
+			});
+		}
+	});
 });
 
 module.exports = router;

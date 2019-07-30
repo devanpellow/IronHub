@@ -7,7 +7,9 @@ export class Project extends Component {
     title: "",
     projectUrl: "",
     module: "",
-    description: ""
+    description: "",
+    liked: false,
+    numberOfLikes: 0
   };
 
   getProject = () => {
@@ -15,9 +17,24 @@ export class Project extends Component {
     return axios
       .get(`/project/${projectId}`)
       .then(response => {
-        const { title, projectUrl, module, description } = response.data;
+        const {
+          title,
+          projectUrl,
+          module,
+          description,
+          likedUser
+        } = response.data;
         console.log(response.data);
-        this.setState({ title, projectUrl, module, description });
+        let liked = likedUser.includes(this.props.user._id);
+        let numberOfLikes = likedUser.length;
+        this.setState({
+          title,
+          projectUrl,
+          module,
+          description,
+          liked,
+          numberOfLikes
+        });
       })
       .catch(err => {
         console.log(err);
@@ -28,6 +45,23 @@ export class Project extends Component {
     this.getProject();
   }
 
+  handleClick = () => {
+    this.setState(
+      {
+        liked: !this.state.liked
+      },
+      () => {
+        axios
+          .put(`/project/${this.props.match.params.id}`, {
+            user: this.props.user._id
+          })
+          .then(response =>
+            this.setState({ numberOfLikes: response.data.likedUser.length })
+          );
+      }
+    );
+  };
+
   render() {
     return (
       <div>
@@ -36,9 +70,12 @@ export class Project extends Component {
           <h1>Project Title: {this.state.title}</h1>
           <h1>Project Description: {this.state.description}</h1>
           <p>Project ID: {this.props.match.params.id}</p>
-          <p>{<img src="this.state.imageUrl" alt="project screenshot"/>}</p>
+          <p>
+            <img src={this.state.imageUrl} alt="" />
+          </p>
         </div>
-        <LikeButton />
+        <p>{this.state.numberOfLikes}</p>
+        <LikeButton liked={this.state.liked} handleClick={this.handleClick} />
       </div>
     );
   }
