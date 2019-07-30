@@ -4,36 +4,37 @@ import { Form, Button } from "react-bootstrap";
 import AddImage from "../AddImage";
 
 export default class ProjectForm extends Component {
-	state = {
-		title: "",
-		projectUrl: "",
-		description: "",
-		module: "",
-		imageUrl: ""
-	};
+  state = {
+    title: "",
+    projectUrl: "",
+    description: "",
+    module: "",
+    imageUrl: ""
+  };
 
-	handleChange = event => {
-		const { name, value } = event.target;
-		this.setState({
-			[name]: value
-		});
-	};
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
-	handleSubmit = event => {
-		console.log("handleSubmit");
-		event.preventDefault();
+  handleSubmit = event => {
+    console.log("handleSubmit");
+    event.preventDefault();
 
-		axios
-			.post("/profile", {
-				title: this.state.title,
-				projectUrl: this.state.projectUrl,
-				description: this.state.description,
-				module: this.state.module
-			})
-			.then(newProject => {
+    axios
+      .post("/profile", {
+        title: this.state.title,
+        projectURL: this.state.projectURL,
+        description: this.state.description,
+        module: this.state.module,
+        imageUrl: this.state.imageUrl
+      })
+      .then(newProject => {
         // this.props.refreshList();
-				const newData = newProject.data;
-				console.log("aloalosoaldo",newData)
+        const newData = newProject.data;
+        console.log("aloalosoaldo", newData);
         axios
           .put("/profile/addproject", { newData })
           .then(updatedUser => {
@@ -42,7 +43,8 @@ export default class ProjectForm extends Component {
               title: "",
               projectURL: "",
               description: "",
-              module: ""
+              module: "",
+              imageUrl: ""
             });
           })
           .catch(err => {
@@ -54,66 +56,66 @@ export default class ProjectForm extends Component {
       });
   };
 
-	// this method handles just the file upload
-	handleFileUpload = imageUrl => {
-		this.setState({ imageUrl: imageUrl });
-	};
+  // this method handles just the file upload
+  handleFileUpload = imageUrl => {
+    this.setState({ imageUrl: imageUrl });
+  };
 
-	render() {
-		return (
-			<Form onSubmit={this.handleSubmit}>
-				<Form.Group>
-					<Form.Label>Module:</Form.Label>
-					<Form.Control
-						as="select"
-						onChange={this.handleChange}
-						type="text"
-						name="module"
-						id="module"
-						value={this.state.module}
-					>
-						<option>Choose...</option>
-						<option value="Module 1">Module 1: Frontend</option>
-						<option value="Module 2">Module 2: Backend</option>
-						<option value="Module 3">Module 3: React</option>
-					</Form.Control>
-				</Form.Group>
-				<Form.Group>
-					<Form.Label htmlFor="title">Title: </Form.Label>
-					<Form.Control
-						type="text"
-						onChange={this.handleChange}
-						id="title"
-						name="title"
-						value={this.state.title}
-					/>
-				</Form.Group>
+  render() {
+    return (
+      <Form onSubmit={this.handleSubmit}>
+        <Form.Group>
+          <Form.Label>Module:</Form.Label>
+          <Form.Control
+            as="select"
+            onChange={this.handleChange}
+            type="text"
+            name="module"
+            id="module"
+            value={this.state.module}
+          >
+            <option>Choose...</option>
+            <option value="Module 1">Module 1: Frontend</option>
+            <option value="Module 2">Module 2: Backend</option>
+            <option value="Module 3">Module 3: React</option>
+          </Form.Control>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label htmlFor="title">Title: </Form.Label>
+          <Form.Control
+            type="text"
+            onChange={this.handleChange}
+            id="title"
+            name="title"
+            value={this.state.title}
+          />
+        </Form.Group>
 
-				<Form.Group>
-					<Form.Label htmlFor="description">Description: </Form.Label>
-					<Form.Control
-						onChange={this.handleChange}
-						type="text"
-						name="description"
-						id="description"
-						value={this.state.description}
-					/>
-				</Form.Group>
+        <Form.Group>
+          <Form.Label htmlFor="description">Description: </Form.Label>
+          <Form.Control
+            onChange={this.handleChange}
+            type="text"
+            name="description"
+            id="description"
+            value={this.state.description}
+          />
+        </Form.Group>
 
-				<Form.Group>
-					<Form.Label htmlFor="projectUrl">Project URL: </Form.Label>
-					<Form.Control
-						onChange={this.handleChange}
-						type="text"
-						name="projectUrl"
-						id="projectUrl"
-						value={this.state.projectUrl}
-					/>
-				</Form.Group>
-				<AddImage onImageChange={this.handleFileUpload} />
-				{this.state.imageUrl && <img src={this.state.imageUrl} />}
-				<Button type="submit">Add Project</Button>
-			</Form>
-		);
-	}
+        <Form.Group>
+          <Form.Label htmlFor="projectUrl">Project URL: </Form.Label>
+          <Form.Control
+            onChange={this.handleChange}
+            type="text"
+            name="projectUrl"
+            id="projectUrl"
+            value={this.state.projectUrl}
+          />
+        </Form.Group>
+        <AddImage onImageChange={this.handleFileUpload} />
+        {this.state.imageUrl && <img src={this.state.imageUrl} />}
+        <Button type="submit">Add Project</Button>
+      </Form>
+    );
+  }
 }

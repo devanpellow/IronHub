@@ -4,10 +4,16 @@ const Schema = mongoose.Schema;
 const projectSchema = new Schema(
   {
     title: String,
-    projectUrl: String,
-    module: String,
-    description: String
-    
+    projectURL: String,
+    rojectURL: String,
+    module: Number,
+    imageUrl: String
+
+    // technologies: String,
+    // displaypicture: String
+  },
+  {
+    timestamps: true
   }
   // ,
   // {
