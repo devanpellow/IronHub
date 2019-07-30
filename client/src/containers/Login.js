@@ -26,12 +26,15 @@ export default class Login extends Component {
 				password: this.state.password
 			})
 			.then(response => {
-				console.log(response);
-				this.props.setUser(response.data);
-				this.props.history.push({
-					pathname: "/profile",
-					user: response.data
-				});
+				if (response.data.message) {
+					this.setState({ error: response.data.message });
+				} else {
+					this.props.setUser(response.data);
+					this.props.history.push({
+						pathname: "/profile",
+						user: response.data
+					});
+				}
 			})
 			.catch(err => {
 				console.log(err);
@@ -62,9 +65,7 @@ export default class Login extends Component {
 					/>
 				</Form.Group>
 
-				{this.state.error && (
-					<Alert variant="warning">{this.state.error}</Alert>
-				)}
+				{this.state.error && <p>{this.state.error}</p>}
 
 				<Button type="submit">Login</Button>
 			</Form>

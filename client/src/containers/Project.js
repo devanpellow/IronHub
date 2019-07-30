@@ -36,7 +36,7 @@ export class Project extends Component {
           <h1>Project Title: {this.state.title}</h1>
           <h1>Project Description: {this.state.description}</h1>
           <p>Project ID: {this.props.match.params.id}</p>
-          <p>{<img src="this.state.imageUrl" />}</p>
+          <p>{<img src="this.state.imageUrl" alt="project screenshot"/>}</p>
         </div>
         <LikeButton />
       </div>

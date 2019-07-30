@@ -16,7 +16,16 @@ export default class ProjectForm extends Component {
 	handleChange = event => {
 		const { name, value } = event.target;
 		console.log(value);
-		this.setState({
+		if (!event.target.name) {
+			let technologiesCopy = [...this.state.technologies];
+			if (technologiesCopy.includes(value)) {
+				this.setState({
+					technologies: technologiesCopy.filter(el => el !== value)
+				});
+			} else {
+				this.setState({ technologies: [...technologiesCopy, value] });
+			}
+		}else	this.setState({
 			[name]: value
 		});
 	};
@@ -59,95 +68,80 @@ export default class ProjectForm extends Component {
 			});
 	};
 
-  // this method handles just the file upload
-  handleFileUpload = imageUrl => {
-    this.setState({ imageUrl: imageUrl });
-  };
+	// this method handles just the file upload
+	handleFileUpload = imageUrl => {
+		this.setState({ imageUrl: imageUrl });
+	};
 
-  render() {
-    return (
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Group>
-          <Form.Label>Module:</Form.Label>
-          <Form.Control
-            as="select"
-            onChange={this.handleChange}
-            type="text"
-            name="module"
-            id="module"
-            value={this.state.module}
-          >
-            <option>Choose...</option>
-            <option value="Module 1">Module 1: Frontend</option>
-            <option value="Module 2">Module 2: Backend</option>
-            <option value="Module 3">Module 3: React</option>
-          </Form.Control>
-        </Form.Group>
-        <Form.Group>
-          <Form.Label htmlFor="title">Title: </Form.Label>
-          <Form.Control
-            type="text"
-            onChange={this.handleChange}
-            id="title"
-            name="title"
-            value={this.state.title}
-          />
-        </Form.Group>
+	render() {
+		return (
+			<Form onSubmit={this.handleSubmit}>
+				<Form.Group>
+					<Form.Label>Module:</Form.Label>
+					<Form.Control
+						as="select"
+						onChange={this.handleChange}
+						type="text"
+						name="module"
+						id="module"
+						value={this.state.module}
+					>
+						<option>Choose...</option>
+						<option value="Module 1">Module 1: Frontend</option>
+						<option value="Module 2">Module 2: Backend</option>
+						<option value="Module 3">Module 3: React</option>
+					</Form.Control>
+				</Form.Group>
+				<Form.Group>
+					<Form.Label htmlFor="title">Title: </Form.Label>
+					<Form.Control
+						type="text"
+						onChange={this.handleChange}
+						id="title"
+						name="title"
+						value={this.state.title}
+					/>
+				</Form.Group>
 
-        <Form.Group>
-          <Form.Label htmlFor="description">Description: </Form.Label>
-          <Form.Control
-            onChange={this.handleChange}
-            type="text"
-            name="description"
-            id="description"
-            value={this.state.description}
-          />
-        </Form.Group>
+				<Form.Group>
+					<Form.Label htmlFor="description">Description: </Form.Label>
+					<Form.Control
+						onChange={this.handleChange}
+						type="text"
+						name="description"
+						id="description"
+						value={this.state.description}
+					/>
+				</Form.Group>
 
 				<Form.Group>
 					<Form.Label>Technologies Used:</Form.Label>
-					<Form.Control
-						as="Checkbox"
+
+					<Form.Check type="checkbox" value="HTML" label="HTML" />
+					<Form.Check type="checkbox" value="CSS" label="CSS" />
+					<Form.Check
+						type="checkbox"
+						value="JavaScript"
+						label="JavaScript"
 						onChange={this.handleChange}
-						type="text"
-						name="technologies"
-						id="technologies"
-						value={this.state.technologies}
-					>
-						<Form.Check type="checkbox" value="HTML" label="HTML" />
-						<Form.Check type="checkbox" value="CSS" label="CSS" />
-						<Form.Check
-							type="checkbox"
-							value="JavaScript"
-							label="JavaScript"
-						/>
-						<Form.Check
-							type="checkbox"
-							value="P5.js"
-							label="P5.js"
-						/>
-						<Form.Check
-							type="checkbox"
-							value="Handlebars"
-							label="Handlebars"
-						/>
-						<Form.Check
-							type="checkbox"
-							value="Node.js"
-							label="Node.js"
-						/>
-						<Form.Check
-							type="checkbox"
-							value="Express.js"
-							label="Express.js"
-						/>
-						<Form.Check
-							type="checkbox"
-							value="React"
-							label="React"
-						/>
-					</Form.Control>
+					/>
+					<Form.Check type="checkbox" value="P5.js" label="P5.js" />
+					<Form.Check
+						type="checkbox"
+						value="Handlebars"
+						label="Handlebars"
+					/>
+					<Form.Check
+						type="checkbox"
+						value="Node.js"
+						label="Node.js"
+					/>
+					<Form.Check
+						type="checkbox"
+						value="Express.js"
+						label="Express.js"
+					/>
+					<Form.Check type="checkbox" value="React" label="React" />
 				</Form.Group>
 				<Form.Group>
 					<Form.Label htmlFor="projectUrl">Project URL: </Form.Label>
