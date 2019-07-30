@@ -14,7 +14,7 @@ export class ProjectList extends Component {
         <Card style={{ width: "18rem" }}>
           <Card.Body>
             <img src="/../images/ironhub-logo.svg" alt="IronHub" />
-            <Card.Text>A Web App to do something cool.</Card.Text>
+            <Card.Text>{}</Card.Text>
             <Card.Link>Project Details</Card.Link>
             <Card.Link href="#">Visit Site</Card.Link>
           </Card.Body>

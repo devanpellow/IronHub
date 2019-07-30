@@ -25,7 +25,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<Nav setUser={this.setUser} />
+				<Nav setUser={this.setUser} user={this.state.user} />
 				<Switch>
 					<Route exact path="/" component={Home} />
 					<Protected

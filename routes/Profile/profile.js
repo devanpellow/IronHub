@@ -4,8 +4,8 @@ const Project = require("../../models/Project");
 const User = require("../../models/User");
 
 router.post("/", (req, res) => {
-	const { title, projectUrl, description, module } = req.body;
-	Project.create({ title, projectUrl, description, module })
+	const { title, projectUrl, description, module, imageUrl } = req.body;
+	Project.create({ title, projectUrl, description, module, imageUrl })
 		.then(project => {
 			res.json(project);
 		})
@@ -18,14 +18,14 @@ router.get("/", (req, res) => {
 	console.log("/profile");
 	const id = req.user._id;
 
-	const user = User.findById({ _id:id })
-	.then(user => {
-    console.log("dababy",user)
-    res.json(user);
-  })
-  .catch(err => {
-    res.json(err);
-  });
+	const user = User.findById({ _id: id })
+		.then(user => {
+			console.log("dababy", user);
+			res.json(user);
+		})
+		.catch(err => {
+			res.json(err);
+		});
 });
 
 router.put("/", (req, res) => {

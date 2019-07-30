@@ -9,11 +9,13 @@ export default class ProjectForm extends Component {
 		projectUrl: "",
 		description: "",
 		module: "",
-		imageUrl: ""
+		imageUrl: "",
+		technologies: []
 	};
 
 	handleChange = event => {
 		const { name, value } = event.target;
+		console.log(value);
 		this.setState({
 			[name]: value
 		});
@@ -21,6 +23,7 @@ export default class ProjectForm extends Component {
 
 	handleSubmit = event => {
 		console.log("handleSubmit");
+
 		event.preventDefault();
 
 		axios
@@ -28,31 +31,33 @@ export default class ProjectForm extends Component {
 				title: this.state.title,
 				projectUrl: this.state.projectUrl,
 				description: this.state.description,
-				module: this.state.module
+				module: this.state.module,
+				technologies: this.state.technologies
 			})
 			.then(newProject => {
-        // this.props.refreshList();
+				// this.props.refreshList();
 				const newData = newProject.data;
-				console.log("aloalosoaldo",newData)
-        axios
-          .put("/profile/addproject", { newData })
-          .then(updatedUser => {
-            console.log("updateUser", updatedUser);
-            this.setState({
-              title: "",
-              projectURL: "",
-              description: "",
-              module: ""
-            });
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
+				console.log("newData", newData);
+				axios
+					.put("/profile/addproject", { newData })
+					.then(updatedUser => {
+						console.log("updateUser", updatedUser);
+						this.setState({
+							title: "",
+							projectURL: "",
+							description: "",
+							module: "",
+							technologies: []
+						});
+					})
+					.catch(err => {
+						console.log(err);
+					});
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	};
 
 	// this method handles just the file upload
 	handleFileUpload = imageUrl => {
@@ -101,6 +106,50 @@ export default class ProjectForm extends Component {
 				</Form.Group>
 
 				<Form.Group>
+					<Form.Label>Technologies Used:</Form.Label>
+					<Form.Control
+						as="Checkbox"
+						onChange={this.handleChange}
+						type="text"
+						name="technologies"
+						id="technologies"
+						value={this.state.technologies}
+					>
+						<Form.Check type="checkbox" value="HTML" label="HTML" />
+						<Form.Check type="checkbox" value="CSS" label="CSS" />
+						<Form.Check
+							type="checkbox"
+							value="JavaScript"
+							label="JavaScript"
+						/>
+						<Form.Check
+							type="checkbox"
+							value="P5.js"
+							label="P5.js"
+						/>
+						<Form.Check
+							type="checkbox"
+							value="Handlebars"
+							label="Handlebars"
+						/>
+						<Form.Check
+							type="checkbox"
+							value="Node.js"
+							label="Node.js"
+						/>
+						<Form.Check
+							type="checkbox"
+							value="Express.js"
+							label="Express.js"
+						/>
+						<Form.Check
+							type="checkbox"
+							value="React"
+							label="React"
+						/>
+					</Form.Control>
+				</Form.Group>
+				<Form.Group>
 					<Form.Label htmlFor="projectUrl">Project URL: </Form.Label>
 					<Form.Control
 						onChange={this.handleChange}
@@ -111,7 +160,9 @@ export default class ProjectForm extends Component {
 					/>
 				</Form.Group>
 				<AddImage onImageChange={this.handleFileUpload} />
-				{this.state.imageUrl && <img src={this.state.imageUrl} />}
+				{this.state.imageUrl && (
+					<img src={this.state.imageUrl} alt="website screenshot" />
+				)}
 				<Button type="submit">Add Project</Button>
 			</Form>
 		);

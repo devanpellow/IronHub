@@ -5,13 +5,14 @@ const userSchema = new Schema(
   {
     username: String,
     password: String,
-    name: String,
-    bio: String,
+    name: { type: String, required: true },
+    bio: { type: String, required: true },
     github: String,
     linkedin: String,
     location: {
       type: String,
-      enum: ["Berlin", "Lisbon", "Paris", "Madrid"]
+      enum: ["Berlin", "Lisbon", "Paris", "Madrid"],
+      required: true
     },
     skills: String,
     projects: [{ type: Schema.Types.ObjectId, ref: "Project" }]

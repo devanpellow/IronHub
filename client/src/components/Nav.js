@@ -12,7 +12,6 @@ const handleSubmit = (props) => {
 
 const Nav = props => {
 	return (
-		<div>
 			<Container id="nav-container">
 				<Navbar>
 					<Navbar.Brand href="/">
@@ -24,24 +23,35 @@ const Nav = props => {
 							alt="IronHub"
 						/>
 					</Navbar.Brand>
-					<Navbar.Toggle />
+					{ props.user ? (
+						<>
 					<Navbar.Collapse className="justify-content-end nav-btns">
-						<Link to="/login">
-							<Button variant="link">Login</Button>
-						</Link>
-						<Link to="/profile">
-							<Button variant="link">Profile</Button>
-						</Link>
-						<Link to="/signup">
-							<Button variant="link">Signup</Button>
-						</Link>
+					<Link to="/profile">
+						<Button variant="link">Profile</Button>
+					</Link>
 						<Link onClick={() => handleSubmit(props)} to="/">
 							Logout
 						</Link>
 					</Navbar.Collapse>
-				</Navbar>
+						</>
+						) : (
+							<>
+					<Navbar.Collapse className="justify-content-end nav-btns">
+					<Link to="/profile">
+						<Button variant="link">Profile</Button>
+					</Link>
+						<Link to="/login">
+							<Button variant="link">Login</Button>
+						</Link>
+						<Link to="/signup">
+							<Button variant="link">Signup</Button>
+						</Link>
+						</Navbar.Collapse>
+						</>
+						)}
+						</Navbar>
 			</Container>
-		</div>
+
 	);
 };
 
