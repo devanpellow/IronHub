@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Form, Button } from "react-bootstrap";
 import AddImage from "../AddImage";
-// import service from ".../api/service";
 
 export default class ProjectForm extends Component {
   state = {
     title: "",
-    projectURL: "",
+    projectUrl: "",
     description: "",
     module: "",
     imageUrl: ""
@@ -15,7 +14,6 @@ export default class ProjectForm extends Component {
 
   handleChange = event => {
     const { name, value } = event.target;
-    console.log(value);
     this.setState({
       [name]: value
     });
@@ -71,22 +69,19 @@ export default class ProjectForm extends Component {
           <Form.Control
             as="select"
             onChange={this.handleChange}
-            type=""
+            type="text"
             name="module"
             id="module"
             value={this.state.module}
           >
             <option>Choose...</option>
-            <option value="1">Frontend</option>
-            <option value="2">Backend</option>
-            <option value="3">React</option>
+            <option value="Module 1">Module 1: Frontend</option>
+            <option value="Module 2">Module 2: Backend</option>
+            <option value="Module 3">Module 3: React</option>
           </Form.Control>
         </Form.Group>
-        {/* all groups (label + input) are grouped in a Form.Group */}
         <Form.Group>
-          {/* <label></label> */}
           <Form.Label htmlFor="title">Title: </Form.Label>
-          {/* <input /> */}
           <Form.Control
             type="text"
             onChange={this.handleChange}
@@ -108,13 +103,13 @@ export default class ProjectForm extends Component {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label htmlFor="projectURL">Project URL: </Form.Label>
+          <Form.Label htmlFor="projectUrl">Project URL: </Form.Label>
           <Form.Control
             onChange={this.handleChange}
             type="text"
-            name="projectURL"
-            id="projectURL"
-            value={this.state.projectURL}
+            name="projectUrl"
+            id="projectUrl"
+            value={this.state.projectUrl}
           />
         </Form.Group>
         <AddImage onImageChange={this.handleFileUpload} />

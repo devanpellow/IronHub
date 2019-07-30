@@ -4,7 +4,10 @@ import LikeButton from "../components/LikeButton";
 
 export class Project extends Component {
   state = {
-    title: ""
+    title: "",
+    projectUrl: "",
+    module: "",
+    description: ""
   };
 
   getProject = () => {
@@ -12,8 +15,9 @@ export class Project extends Component {
     return axios
       .get(`/project/${projectId}`)
       .then(response => {
-        const { title } = response.data;
-        this.setState({ title });
+        const { title, projectUrl, module, description } = response.data;
+        console.log(response.data);
+        this.setState({ title, projectUrl, module, description });
       })
       .catch(err => {
         console.log(err);
