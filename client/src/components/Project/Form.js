@@ -30,12 +30,13 @@ export default class ProjectForm extends Component {
         title: this.state.title,
         projectURL: this.state.projectURL,
         description: this.state.description,
-        module: this.state.module
+        module: this.state.module,
+        imageUrl: this.state.imageUrl
       })
       .then(newProject => {
         // this.props.refreshList();
-				const newData = newProject.data;
-				console.log("aloalosoaldo",newData)
+        const newData = newProject.data;
+        console.log("aloalosoaldo", newData);
         axios
           .put("/profile/addproject", { newData })
           .then(updatedUser => {
@@ -44,7 +45,8 @@ export default class ProjectForm extends Component {
               title: "",
               projectURL: "",
               description: "",
-              module: ""
+              module: "",
+              imageUrl: ""
             });
           })
           .catch(err => {

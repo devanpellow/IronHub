@@ -6,7 +6,9 @@ const projectSchema = new Schema(
     title: String,
     projectURL: String,
     rojectURL: String,
-    moduleNumber: Number
+    module: Number,
+    imageUrl: String
+
     // technologies: String,
     // displaypicture: String
   },
