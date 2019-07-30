@@ -8,6 +8,16 @@ router.get("/", (req, res, next) => {
 	res.render("index");
 });
 
+router.get("/projects", (req, res) => {
+	Project.find()
+	.then(projects =>{
+		res.json(projects)
+	})
+	.catch(err => {
+		res.json(err);
+	});
+})
+
 router.post("/profile", (req, res) => {
 	const {
 		title,

@@ -1,27 +1,27 @@
-import React, { Component } from "react";
-import { Card } from "react-bootstrap";
-// import { Link } from "react-router-dom";
-// import axios from "axios";
+import React from "react";
+import { Card, Link } from "react-bootstrap";
+// import { Link } from "react-router-dom'
 
-export class ProjectList extends Component {
-  state = {
-    projectUrl: ""
-  };
+const ProjectCard = props => {
+	return (
+		<div>
+			{props.projects.length > 0 && <h1>Projects:</h1>}
 
-  render() {
-    return (
-      <div>
-        <Card style={{ width: "18rem" }}>
-          <Card.Body>
-            <img src="/../images/ironhub-logo.svg" alt="IronHub" />
-            <Card.Text>{}</Card.Text>
-            <Card.Link>Project Details</Card.Link>
-            <Card.Link href="#">Visit Site</Card.Link>
-          </Card.Body>
-        </Card>
+			{props.projects.map(project => {
+				return (
+					<Card style={{ width: "18rem" }}>
+						<Card.Body>
+            <img src="" alt="project screenshot" />
+							<Card.Text>{project.title}</Card.Text>
+              <a href={project.projectUrl}>Visit Site</a>
+              </Card.Body>
+              </Card>
+              );
+			})}
       </div>
-    );
-  }
-}
+	);
+};
 
-export default ProjectList;
+export default ProjectCard;
+
+// <Link to={`/projects/${project._id}`}>Project Details</Link>

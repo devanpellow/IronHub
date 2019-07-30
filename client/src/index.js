@@ -8,7 +8,7 @@ import App from "./App";
 import axios from "axios";
 
 axios
-	.get("/api/auth/loggedin")
+	.get("/api/auth/loggedin", "/")
 	.then(response => {
 		ReactDOM.render(
 			<Router>
