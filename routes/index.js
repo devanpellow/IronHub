@@ -9,9 +9,23 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/profile", (req, res) => {
-	const { title, projectUrl, description, module, imageUrl } = req.body;
+	const {
+		title,
+		projectUrl,
+		description,
+		module,
+		imageUrl,
+		technologies
+	} = req.body;
 	console.log(req.body);
-	Project.create({ title, projectUrl, description, module, imageUrl })
+	Project.create({
+		title,
+		projectUrl,
+		description,
+		module,
+		imageUrl,
+		technologies
+	})
 		.then(project => {
 			res.json(project);
 		})
@@ -23,15 +37,15 @@ router.post("/profile", (req, res) => {
 router.get("/project/:id", (req, res) => {
 	const { id } = req.params;
 	console.log(req.body);
-	Project.findById({ _id:id })
+	Project.findById({ _id: id })
 		.then(project => {
-			console.log(project)
+			console.log(project);
+			console.log("laflare 1017 brick squad");
 			res.json(project);
 		})
 		.catch(err => {
 			res.json(err);
 		});
 });
-
 
 module.exports = router;

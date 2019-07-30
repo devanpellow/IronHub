@@ -25,9 +25,10 @@ export default class ProjectForm extends Component {
 			} else {
 				this.setState({ technologies: [...technologiesCopy, value] });
 			}
-		}else	this.setState({
-			[name]: value
-		});
+		} else
+			this.setState({
+				[name]: value
+			});
 	};
 
 	handleSubmit = event => {
@@ -117,31 +118,54 @@ export default class ProjectForm extends Component {
 				<Form.Group>
 					<Form.Label>Technologies Used:</Form.Label>
 
-					<Form.Check type="checkbox" value="HTML" label="HTML" />
-					<Form.Check type="checkbox" value="CSS" label="CSS" />
+					<Form.Check
+						type="checkbox"
+						value="HTML"
+						label="HTML"
+						onChange={this.handleChange}
+					/>
+					<Form.Check
+						type="checkbox"
+						value="CSS"
+						label="CSS"
+						onChange={this.handleChange}
+					/>
 					<Form.Check
 						type="checkbox"
 						value="JavaScript"
 						label="JavaScript"
 						onChange={this.handleChange}
 					/>
-					<Form.Check type="checkbox" value="P5.js" label="P5.js" />
+					<Form.Check
+						type="checkbox"
+						value="P5.js"
+						label="P5.js"
+						onChange={this.handleChange}
+					/>
 					<Form.Check
 						type="checkbox"
 						value="Handlebars"
 						label="Handlebars"
+						onChange={this.handleChange}
 					/>
 					<Form.Check
 						type="checkbox"
 						value="Node.js"
 						label="Node.js"
+						onChange={this.handleChange}
 					/>
 					<Form.Check
 						type="checkbox"
 						value="Express.js"
 						label="Express.js"
+						onChange={this.handleChange}
 					/>
-					<Form.Check type="checkbox" value="React" label="React" />
+					<Form.Check
+						type="checkbox"
+						value="React"
+						label="React"
+						onChange={this.handleChange}
+					/>
 				</Form.Group>
 				<Form.Group>
 					<Form.Label htmlFor="projectUrl">Project URL: </Form.Label>

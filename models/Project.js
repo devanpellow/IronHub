@@ -7,7 +7,8 @@ const projectSchema = new Schema(
 		projectUrl: { type: String, required: true },
 		module: { type: String, required: true },
 		description: { type: String, required: true },
-		imageUrl: String
+    imageUrl: String,
+    technologies: []
 	}
 	// ,
 	// {
