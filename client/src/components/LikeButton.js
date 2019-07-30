@@ -24,7 +24,6 @@ export default class LikeButton extends Component {
         <button className="btn btn-primary" onClick={this.handleClick}>
           {label}
         </button>
-        <p>you {text} this. Click to toggle.</p>
       </div>
     );
   }
