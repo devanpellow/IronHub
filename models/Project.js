@@ -8,6 +8,7 @@ const projectSchema = new Schema(
     module: { type: String, required: true },
     description: { type: String, required: true },
     imageUrl: String,
+    technologies: [],
     likedUser: [{ type: Schema.Types.ObjectId, ref: "User" }]
   }
   // ,

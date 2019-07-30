@@ -4,8 +4,8 @@ const Project = require("../../models/Project");
 const User = require("../../models/User");
 
 router.post("/", (req, res) => {
-	const { title, projectUrl, description, module, imageUrl } = req.body;
-	Project.create({ title, projectUrl, description, module, imageUrl })
+	const { title, projectUrl, description, module, imageUrl, technologies } = req.body;
+	Project.create({ title, projectUrl, description, module, imageUrl, technologies  })
 		.then(project => {
 			res.json(project);
 		})
@@ -21,7 +21,6 @@ router.get("/", (req, res) => {
 	const user = User.findById({ _id:id })
 	.populate("projects")
 	.then(user => {
-    console.log("dababy",user)
     res.json(user);
   })
   .catch(err => {
