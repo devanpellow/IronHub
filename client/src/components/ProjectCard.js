@@ -22,7 +22,6 @@ const ProjectCard = props => {
 							<Card.Text>{project.title}</Card.Text>
 							<a
 								href={project.projectUrl}
-								rel="noopener noreferrer"
 								target="_blank"
 							>
 								Visit Site
