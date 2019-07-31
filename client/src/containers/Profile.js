@@ -24,6 +24,8 @@ export default class Profile extends Component {
     });
   };
 
+  deleteProject = () => {};
+
   render() {
     const { name, location, bio, github, linkedin, skills, projects } =
       this.props.user || this.props.location.user;
@@ -44,9 +46,16 @@ export default class Profile extends Component {
             Projects:{" "}
             {projects.map(project => (
               <Link to={`/project/${project._id}`}>
-                {project.title} <br />
+                {project.title}
+                <br />
               </Link>
             ))}
+            <button
+              className="btn btn-primary"
+              onClick={e => this.deleteProject(e)}
+            >
+              Delete
+            </button>
           </h1>
         </div>
         <div>
@@ -56,7 +65,6 @@ export default class Profile extends Component {
           ) : null}
           <button onClick={this.displayProjectForm}>Add Project</button>
           {this.state.displayProjectForm ? <ProjectForm /> : null}
-          <LikeButton />
         </div>
       </div>
     );

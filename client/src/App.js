@@ -10,7 +10,6 @@ import Home from "./containers/Home";
 import Signup from "./containers/Signup";
 import Login from "./containers/Login";
 import Nav from "./components/Nav";
-import ProjectCard from "./components/ProjectCard";
 
 class App extends Component {
 	state = {

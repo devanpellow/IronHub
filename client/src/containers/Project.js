@@ -79,7 +79,6 @@ export class Project extends Component {
           <p>Project ID: {this.props.match.params.id}</p>
           <p>
             <img src={this.state.imageUrl} alt="project screenshot" />
-          </p>
         </div>
         <p>{this.state.numberOfLikes}</p>
         <LikeButton liked={this.state.liked} handleClick={this.handleClick} />

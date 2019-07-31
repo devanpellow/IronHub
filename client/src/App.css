@@ -37,6 +37,11 @@ body {
   flex-wrap: wrap;
   justify-content: space-around;
   margin-bottom: 30px;
+  text-align: center;
+}
+
+.projectCardWrapper {
+ margin-top: 0px; 
 }
 
 .projectImg {
@@ -46,8 +51,8 @@ body {
 
 
 .btn-primary {
-  background-color: #23aa4e;
-  border-color: #177d37;
+  background-color: rgb(86, 196, 239);
+  border-color: white;
 }
 
 #example {
