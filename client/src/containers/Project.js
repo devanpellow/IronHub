@@ -1,74 +1,79 @@
 import React, { Component } from "react";
 import axios from "axios";
 import LikeButton from "../components/LikeButton";
+import ProjectCard from "../components/ProjectCard";
 
 export class Project extends Component {
-	state = {
-		title: "",
-		projectUrl: "",
-		module: "",
-		description: "",
-		imageUrl: "",
-		liked: false,
-		technologies: [],
-		numberOfLikes: 0
-	};
+  state = {
+    title: "",
+    projectUrl: "",
+    module: "",
+    description: "",
+    imageUrl: "",
+    liked: false,
+    technologies: [],
+    numberOfLikes: 0,
+    allProjects: [],
+    filteredProjects: []
+  };
+  componentDidMount() {
+    axios.get("/projects").then(response => {
+      this.setState({ allProjects: response.data });
+    });
+    this.getProject();
+  }
 
-	getProject = () => {
-		const projectId = this.props.match.params.id;
-		return axios
-			.get(`/project/${projectId}`)
-			.then(response => {
-				const {
-					title,
-					projectUrl,
-					module,
-					description,
-					imageUrl,
-					technologies,
-					likedUser
-				} = response.data;
-				console.log(response.data);
-				let liked = likedUser.includes(this.props.user._id);
-				let numberOfLikes = likedUser.length;
-				this.setState({
-					title,
-					projectUrl,
-					module,
-					description,
-					imageUrl,
-					liked,
-					technologies,
-					numberOfLikes
-				});
-			})
-			.catch(err => {
-				console.log(err);
-			});
-	};
+  getProject = () => {
+    const projectId = this.props.match.params.id;
+    return axios
+      .get(`/project/${projectId}`)
+      .then(response => {
+        const {
+          title,
+          projectUrl,
+          module,
+          description,
+          imageUrl,
+          technologies,
+          likedUser
+        } = response.data;
+        console.log(response.data);
+        let liked = likedUser.includes(this.props.user._id);
+        let numberOfLikes = likedUser.length;
+        this.setState({
+          title,
+          projectUrl,
+          module,
+          description,
+          imageUrl,
+          liked,
+          technologies,
+          numberOfLikes
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
-	componentDidMount() {
-		this.getProject();
-	}
-
-	handleClick = () => {
-		this.setState(
-			{
-				liked: !this.state.liked
-			},
-			() => {
-				axios
-					.put(`/project/${this.props.match.params.id}`, {
-						user: this.props.user._id
-					})
-					.then(response =>
-						this.setState({
-							numberOfLikes: response.data.likedUser.length
-						})
-					);
-			}
-		);
-	};
+  handleClick = () => {
+    this.setState(
+      {
+        liked: !this.state.liked
+      },
+      () => {
+        axios
+          .put(`/project/${this.props.match.params.id}`, {
+            user: this.props.user._id
+          })
+          .then(response =>
+            this.setState({
+              numberOfLikes: response.data.likedUser.length
+            })
+          );
+      }
+    );
+  };
 
   render() {
     return (
@@ -96,11 +101,20 @@ export class Project extends Component {
                 <h3>{this.state.technologies.join(`, `)}</h3>
               </div>
             </div>
+            <div className="likeButton">
+              <h3>{this.state.numberOfLikes}</h3>
+              <LikeButton
+                liked={this.state.liked}
+                handleClick={this.handleClick}
+              />
+            </div>
           </div>
         </div>
-        <div className="likeButton">
-          <h3>{this.state.numberOfLikes}</h3>
-          <LikeButton liked={this.state.liked} handleClick={this.handleClick} />
+        <div className="projectCardWrapper">
+          <ProjectCard
+            allProjects={this.state.allProjects}
+            filtered={this.state.filteredProjects}
+          />
         </div>
       </div>
     );
