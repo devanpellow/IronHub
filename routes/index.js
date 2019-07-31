@@ -25,7 +25,8 @@ router.post("/profile", (req, res) => {
     description,
     module,
     imageUrl,
-    technologies
+    technologies,
+    owner
   } = req.body;
   console.log(req.body);
   Project.create({
@@ -34,7 +35,8 @@ router.post("/profile", (req, res) => {
     description,
     module,
     imageUrl,
-    technologies
+    technologies,
+    owner
   })
     .then(project => {
       res.json(project);
@@ -58,7 +60,8 @@ router.get("/profile/:id", (req, res) => {
 
 router.get("/project/:id", (req, res) => {
 	const { id } = req.params;
-	Project.findById({ _id: id })
+  Project.findById({ _id: id })
+    .populate('owner')
 		.then(project => {
 			res.json(project);
 		})

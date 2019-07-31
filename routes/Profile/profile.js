@@ -10,7 +10,8 @@ router.post("/", (req, res) => {
     description,
     module,
     imageUrl,
-    technologies
+    technologies,
+    owner
   } = req.body;
   Project.create({
     title,
@@ -18,7 +19,8 @@ router.post("/", (req, res) => {
     description,
     module,
     imageUrl,
-    technologies
+    technologies,
+    owner
   })
     .then(project => {
       res.json(project);
