@@ -1,0 +1,77 @@
+/* Imports */
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
+
+/* Nav Bar */
+#nav-container {
+  border-bottom: 1px rgb(0, 0, 0) solid;
+}
+
+body {
+  font-family: "Roboto Mono", monospace;
+}
+
+/* Home Page (Landing Page) */
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 80vh;
+}
+
+.home-logo {
+  width: 100px;
+  padding-bottom: 50px;
+}
+
+.search-input {
+  width: 30vw;
+}
+.search-input input {
+  text-align: center;
+}
+
+.projectCards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.projectCardWrapper {
+ margin-top: 0px; 
+}
+
+.projectImg {
+  width: auto;
+  height: 100px;
+}
+
+
+.btn-primary {
+  background-color: rgb(86, 196, 239);
+  border-color: white;
+}
+
+#example {
+  margin: 3rem;
+}
+
+.customContainer {
+  border: 1px;
+}
+
+/* Profile Page */
+
+.profileClass {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80vw;
+}
+
+.projectDisplayProfile {
+  display: grid;
+}
