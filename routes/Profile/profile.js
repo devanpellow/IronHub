@@ -45,16 +45,20 @@ router.get("/", (req, res) => {
 router.put("/", (req, res) => {
   const id = req.user._id;
   const { name, bio, github, linkedin, location, skills } = req.body;
-  User.findByIdAndUpdate(id, {
-    name: name,
-    bio: bio,
-    github: github,
-    linkedin: linkedin,
-    location: location,
-    skills: skills
-  })
+  User.findByIdAndUpdate(
+    id,
+    {
+      name: name,
+      bio: bio,
+      github: github,
+      linkedin: linkedin,
+      location: location,
+      skills: skills
+    },
+    { new: true }
+  )
     .then(user => {
-      res.json({ message: "successfully updated user profile" });
+      res.json(user);
     })
     .catch(err => {
       res.json(err);
@@ -69,8 +73,9 @@ router.put("/addproject", (req, res) => {
     { $push: { projects: { ...project } } },
     { new: true }
   )
+    .populate("projects")
     .then(updatedUser => {
-      res.json({ message: "added project" });
+      res.json(updatedUser);
     })
     .catch(err => {
       console.log("error wile adding project");

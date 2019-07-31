@@ -51,8 +51,10 @@ export default class ProjectForm extends Component {
         console.log("newData", newData);
         axios
           .put("/profile/addproject", { newData })
-          .then(updatedUser => {
-            console.log("updateUser", updatedUser);
+          .then(res => {
+            console.log(res.data)
+            this.props.setUser(res.data);
+
             this.setState({
               title: "",
               projectURL: "",
