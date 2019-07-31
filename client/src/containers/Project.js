@@ -70,18 +70,36 @@ export class Project extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h1>Project Details Page</h1>
-          <h1>Project Title: {this.state.title}</h1>
-          <h1>Project Description: {this.state.description}</h1>
-          <h1>Technologies:{this.state.technologies.join(",")}</h1>
-          <p>Project ID: {this.props.match.params.id}</p>
-          <p>
-            <img src={this.state.imageUrl} alt="project screenshot" />
+      <div className="container">
+        <div className="projectContainer">
+          <div className="projectHead">
+            <img
+              className="projectPicture"
+              src={this.state.imageUrl}
+              alt="project screenshot"
+            />
+          </div>
+          <div className="projectDescriptionBlockWrapper">
+            <div className="projectDescriptionBlock">
+              <div>
+                <h3 className="descriptionTitle">Project Title: </h3>
+                <h3>{this.state.title}</h3>
+              </div>
+              <div>
+                <h3 className="descriptionTitle">Project Description: </h3>
+                <h3>{this.state.description}</h3>
+              </div>
+              <div>
+                <h3 className="descriptionTitle">Technologies:</h3>
+                <h3>{this.state.technologies.join(`, `)}</h3>
+              </div>
+            </div>
+          </div>
         </div>
-        <p>{this.state.numberOfLikes}</p>
-        <LikeButton liked={this.state.liked} handleClick={this.handleClick} />
+        <div className="likeButton">
+          <h3>{this.state.numberOfLikes}</h3>
+          <LikeButton liked={this.state.liked} handleClick={this.handleClick} />
+        </div>
       </div>
     );
   }

@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ProfileForm from "../components/Profile/Form";
 import ProjectForm from "../components/Project/Form";
-// import ProjectForm from "../components/Project/Form";
-import LikeButton from "../components/LikeButton";
 
 export default class Profile extends Component {
   state = {
@@ -27,36 +25,46 @@ export default class Profile extends Component {
   deleteProject = () => {};
 
   render() {
-    const { name, location, bio, github, linkedin, skills, projects } =
+    const { name, location, bio, github, linkedin, skills, projects, _id } =
       this.props.user || this.props.location.user;
 
     return (
-      <div className="profileClass">
-        <div>
-          <h1>Profile Page:</h1>
-          <h1>Name: {name}</h1>
-          <h1>Campus: {location}</h1>
-          <h1>Bio: {bio}</h1>
-          <h1>Github: {github}</h1>
-          <h1>linkedin: {linkedin}</h1>
-          <h1>Skills: {skills}</h1>
-        </div>
-        <div className="projectDisplayProfile">
-          <h1>
-            Projects:{" "}
-            {projects.map(project => (
-              <Link to={`/project/${project._id}`}>
-                {project.title}
-                <br />
-              </Link>
-            ))}
-            <button
-              className="btn btn-primary"
-              onClick={e => this.deleteProject(e)}
-            >
-              Delete
-            </button>
-          </h1>
+      <div className="container">
+        <div className="profileClass">
+          <div className="profileDetailsContainer">
+            <h3>
+              Name:
+              {name}
+            </h3>
+            <h3>
+              Campus:
+              {location}
+            </h3>
+            <h3>
+              Bio:
+              {bio}
+            </h3>
+            <h3>Github: {github}</h3>
+            <h3>linkedin: {linkedin}</h3>
+            <h3>Skills: {skills}</h3>
+          </div>
+          <div className="projectDisplayProfile">
+            <h3>
+              Projects:{" "}
+              {projects.map(project => (
+                <Link to={`/project/${project._id}`}>
+                  {project.title}
+                  <br />
+                </Link>
+              ))}
+              <button
+                className="btn btn-primary"
+                onClick={e => this.deleteProject(e)}
+              >
+                Delete
+              </button>
+            </h3>
+          </div>
         </div>
         <div>
           <button onClick={this.displayEditForm}>Edit Profile</button>
