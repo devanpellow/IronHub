@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import LikeButton from "../components/LikeButton";
 
 export class Project extends Component {
@@ -11,7 +12,8 @@ export class Project extends Component {
 		imageUrl: "",
 		liked: false,
 		technologies: [],
-		numberOfLikes: 0
+		numberOfLikes: 0,
+		owner: []
 	};
 
 	getProject = () => {
@@ -26,9 +28,11 @@ export class Project extends Component {
 					description,
 					imageUrl,
 					technologies,
-					likedUser
+					likedUser,
+					owner
+					
 				} = response.data;
-				console.log(response.data);
+				console.log("response.data",response.data);
 				let liked = likedUser.includes(this.props.user._id);
 				let numberOfLikes = likedUser.length;
 				this.setState({
@@ -39,7 +43,9 @@ export class Project extends Component {
 					imageUrl,
 					liked,
 					technologies,
-					numberOfLikes
+					numberOfLikes,
+					owner
+					
 				});
 			})
 			.catch(err => {
@@ -71,28 +77,50 @@ export class Project extends Component {
 	};
 
 	render() {
+		console.log('grbgbg',this.state.owner[0])
+		const {
+			title,
+			projectUrl,
+			module,
+			description,
+			imageUrl,
+			liked,
+			technologies,
+			numberOfLikes,
+			owner
+		} = this.state;
 		return (
 			<div>
 				<div>
 					<h1>Project Details Page</h1>
-					<h1>Project Title: {this.state.title}</h1>
-					<h1>Project Description: {this.state.description}</h1>
-					<h1>Technologies:{this.state.technologies.join(",")}</h1>
-					<p>Project ID: {this.props.match.params.id}</p>
+					<h1>Project Title: {title}</h1>
+					<h1>{module}</h1>
+					{owner.map(owner => (
+						<>
+						<h1><>Made by: </>
+							<Link to={`/profile/${owner._id}`}>
+								{owner.name}
+								<br />
+							</Link>
+							</h1>
+						</>
+					))}
+					<h1>Project Description: {description}</h1>
+					<h1>Technologies:{technologies.join(",")}</h1>
 					<a
-						href={this.state.projectUrl}
+						href={projectUrl}
 						rel="noopener noreferrer"
 						target="_blank"
 					>
 						<img
-							src={this.state.imageUrl}
+							src={imageUrl}
 							alt="project screenshot"
 						/>
 					</a>
 				</div>
-				<p>{this.state.numberOfLikes}</p>
+				<p>{numberOfLikes}</p>
 				<LikeButton
-					liked={this.state.liked}
+					liked={liked}
 					handleClick={this.handleClick}
 				/>
 			</div>

@@ -66,7 +66,7 @@ export default class Profile extends Component {
                 <Link to={`/project/${project._id}`}>
                   {project.title}
                   <br />
-                </Link>{" "}
+                </Link>
                 <button
                   className="btn btn-primary"
                   onClick={e => this.editProject()}
@@ -90,7 +90,7 @@ export default class Profile extends Component {
           ) : null}
           <button onClick={this.displayProjectForm}>Add Project</button>
           {this.state.displayProjectForm ? (
-            <ProjectForm setUser={this.props.setUser} />
+            <ProjectForm setUser={this.props.setUser} user={this.props.user} />
           ) : null}
         </div>
       </div>
