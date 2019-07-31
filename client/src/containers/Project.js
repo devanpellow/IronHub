@@ -76,8 +76,7 @@ export class Project extends Component {
 		);
 	};
 
-	render() {
-		console.log('grbgbg',this.state.owner[0])
+  render() {
 		const {
 			title,
 			projectUrl,
@@ -89,43 +88,53 @@ export class Project extends Component {
 			numberOfLikes,
 			owner
 		} = this.state;
-		return (
-			<div>
-				<div>
-					<h1>Project Details Page</h1>
-					<h1>Project Title: {title}</h1>
-					<h1>{module}</h1>
-					{owner.map(owner => (
-						<>
-						<h1><>Made by: </>
-							<Link to={`/profile/${owner._id}`}>
-								{owner.name}
-								<br />
-							</Link>
-							</h1>
-						</>
-					))}
-					<h1>Project Description: {description}</h1>
-					<h1>Technologies:{technologies.join(",")}</h1>
-					<a
-						href={projectUrl}
-						rel="noopener noreferrer"
-						target="_blank"
-					>
-						<img
-							src={imageUrl}
-							alt="project screenshot"
+    return (
+      <div className="container">
+        <div className="projectContainer">
+					<div className="projectHead">
+					<a href={projectUrl}>
+            <img
+              className="projectPicture"
+              src={imageUrl}
+              alt="project screenshot"
 						/>
 					</a>
-				</div>
-				<p>{numberOfLikes}</p>
-				<LikeButton
-					liked={liked}
-					handleClick={this.handleClick}
-				/>
-			</div>
-		);
-	}
+          </div>
+          <div className="projectDescriptionBlockWrapper">
+            <div className="projectDescriptionBlock">
+              <div>
+                <h3 className="descriptionTitle">Project Title: </h3>
+                <h3>{title}</h3>
+              </div>
+              <div>
+                <h3 className="descriptionTitle">Project Description: </h3>
+								<h3>{module}</h3>
+                <h3>{description}</h3>
+              </div>
+              <div>
+                <h3 className="descriptionTitle">Technologies:</h3>
+                <h3>{technologies.join(`, `)}</h3>
+								{owner.map(owner => (
+									<>
+									<h3><>Made by: </>
+										<Link to={`/profile/${owner._id}`}>
+											{owner.name}
+											<br />
+										</Link>
+										</h3>
+									</>
+								))}
+							</div>
+            </div>
+          </div>
+        </div>
+        <div className="likeButton">
+          <h3>{numberOfLikes}</h3>
+          <LikeButton liked={liked} handleClick={this.handleClick} />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Project;
