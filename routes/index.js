@@ -44,12 +44,22 @@ router.post("/profile", (req, res) => {
 		});
 });
 
+router.get("/profile/:id", (req, res) => {
+	const { id } = req.params;
+	User.findById({ _id: id })
+		.populate('projects')
+		.then(user => {
+			res.json(user);
+		})
+		.catch(err => {
+			res.json(err);
+		});
+});
+
 router.get("/project/:id", (req, res) => {
 	const { id } = req.params;
-	console.log(req.body);
 	Project.findById({ _id: id })
 		.then(project => {
-			console.log(project);
 			res.json(project);
 		})
 		.catch(err => {

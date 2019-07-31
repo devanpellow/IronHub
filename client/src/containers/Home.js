@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Form } from "react-bootstrap";
 import axios from "axios";
 import ProjectCard from "../components/ProjectCard";
-// import LikeButton from "../components/LikeButton";
 
 export class Home extends Component {
 	state = {
@@ -13,25 +12,38 @@ export class Home extends Component {
 
 	handleSubmit = event => {
 		event.preventDefault();
-		this.setState({ search: event.target.value});
-		let filteredProjectsArr = this.state.allProjects.slice(0).filter((project) => {
-				if (project.title.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1) {
-					return project.title.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
-				}
-		});
+		this.setState({ search: event.target.value });
+		const search = event.target.value.toLowerCase();
 
-		this.setState({filteredProjects: filteredProjectsArr})
+		let filteredProjectsArr = this.state.allProjects.slice(0).filter(project => {
+				let lowerCaseTechnologies = [];
+				project.technologies.map(el => {
+					return lowerCaseTechnologies.push(el.toLowerCase());
+				});
+
+				let foundTech = false
+				lowerCaseTechnologies.forEach(x => {
+					if(x.indexOf(search) !== -1){
+						foundTech = true
+					}
+				})
+
+				if (project.title.toLowerCase().indexOf(search) !== -1) {
+					return project;
+				} else if (foundTech) {
+					return project
+				}
+			});
+		this.setState({ filteredProjects: filteredProjectsArr });
 	};
-	
+
 	componentDidMount() {
 		axios.get("/projects").then(response => {
 			this.setState({ allProjects: response.data });
 		});
 	}
-	
+
 	render() {
-		console.log(this.state.search)
-		console.log(this.state.filteredProjects)
 		return (
 			<div className="home">
 				<div className="home-logo">
@@ -49,7 +61,10 @@ export class Home extends Component {
 				</div>
 				<br />
 				<div className="projectCardWrapper">
-					<ProjectCard allProjects={this.state.allProjects} filtered={this.state.filteredProjects} />
+					<ProjectCard
+						allProjects={this.state.allProjects}
+						filtered={this.state.filteredProjects}
+					/>
 				</div>
 			</div>
 		);
