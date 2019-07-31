@@ -13,10 +13,13 @@ export class Home extends Component {
 
 	handleSubmit = event => {
 		event.preventDefault();
-		this.setState({ search: event.target.value });
+		this.setState({ search: event.target.value});
 		let filteredProjectsArr = this.state.allProjects.slice(0).filter((project) => {
-			return project.title.indexOf(event.target.value) !== -1
+				if (project.title.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1) {
+					return project.title.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
+				}
 		});
+
 		this.setState({filteredProjects: filteredProjectsArr})
 	};
 	
