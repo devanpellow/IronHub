@@ -41,14 +41,13 @@ body {
 }
 
 .projectCardWrapper {
- margin-top: 0px; 
+  margin-top: 0px;
 }
 
 .projectImg {
   width: auto;
   height: 100px;
 }
-
 
 .btn-primary {
   background-color: rgb(86, 196, 239);
