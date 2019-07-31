@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // include the model:
-const Image = require("../models/image");
+const Image = require("../models/Image");
 
 router.get("/image", (req, res, next) => {
   Image.find()
