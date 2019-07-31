@@ -10,6 +10,7 @@ export class Project extends Component {
     description: "",
     imageUrl: "",
     liked: false,
+    technologies: [],
     numberOfLikes: 0
   };
 
@@ -24,6 +25,7 @@ export class Project extends Component {
           module,
           description,
           imageUrl,
+          technologies,
           likedUser
         } = response.data;
         console.log(response.data);
@@ -36,6 +38,7 @@ export class Project extends Component {
           description,
           imageUrl,
           liked,
+          technologies,
           numberOfLikes
         });
       })
@@ -72,6 +75,7 @@ export class Project extends Component {
           <h1>Project Details Page</h1>
           <h1>Project Title: {this.state.title}</h1>
           <h1>Project Description: {this.state.description}</h1>
+          <h1>Technologies:{this.state.technologies.join(",")}</h1>
           <p>Project ID: {this.props.match.params.id}</p>
           <p>
             <img src={this.state.imageUrl} alt="project screenshot" />
