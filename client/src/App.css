@@ -37,6 +37,7 @@ body {
   flex-wrap: wrap;
   justify-content: space-around;
   margin-bottom: 30px;
+  text-align: center;
 }
 
 .projectCardWrapper {
