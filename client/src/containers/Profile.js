@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ProfileForm from "../components/Profile/Form";
 import ProjectForm from "../components/Project/Form";
+//import Project from "../components/Project";
+import axios from "axios";
 
 export default class Profile extends Component {
   state = {
@@ -22,7 +24,24 @@ export default class Profile extends Component {
     });
   };
 
-  deleteProject = () => {};
+  deleteProject = (event, id) => {
+    event.preventDefault();
+
+    axios
+      .delete(`/project/${id}`, {})
+      .then(() => {
+        axios.get("/profile").then(res => {
+          console.log(res);
+          this.props.setUser(res.data);
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  editProject = () => {};
+  //axios put and then put route to edit or delete project
 
   render() {
     const { name, location, bio, github, linkedin, skills, projects, _id } =
@@ -72,7 +91,9 @@ export default class Profile extends Component {
             <ProfileForm user={this.props.user || this.props.location.user} />
           ) : null}
           <button onClick={this.displayProjectForm}>Add Project</button>
-          {this.state.displayProjectForm ? <ProjectForm /> : null}
+          {this.state.displayProjectForm ? (
+            <ProjectForm setUser={this.props.setUser} />
+          ) : null}
         </div>
       </div>
     );

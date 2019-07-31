@@ -3,70 +3,72 @@ import axios from "axios";
 import LikeButton from "../components/LikeButton";
 
 export class Project extends Component {
-  state = {
-    title: "",
-    projectUrl: "",
-    module: "",
-    description: "",
-    imageUrl: "",
-    liked: false,
-    technologies: [],
-    numberOfLikes: 0
-  };
+	state = {
+		title: "",
+		projectUrl: "",
+		module: "",
+		description: "",
+		imageUrl: "",
+		liked: false,
+		technologies: [],
+		numberOfLikes: 0
+	};
 
-  getProject = () => {
-    const projectId = this.props.match.params.id;
-    return axios
-      .get(`/project/${projectId}`)
-      .then(response => {
-        const {
-          title,
-          projectUrl,
-          module,
-          description,
-          imageUrl,
-          technologies,
-          likedUser
-        } = response.data;
-        console.log(response.data);
-        let liked = likedUser.includes(this.props.user._id);
-        let numberOfLikes = likedUser.length;
-        this.setState({
-          title,
-          projectUrl,
-          module,
-          description,
-          imageUrl,
-          liked,
-          technologies,
-          numberOfLikes
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
+	getProject = () => {
+		const projectId = this.props.match.params.id;
+		return axios
+			.get(`/project/${projectId}`)
+			.then(response => {
+				const {
+					title,
+					projectUrl,
+					module,
+					description,
+					imageUrl,
+					technologies,
+					likedUser
+				} = response.data;
+				console.log(response.data);
+				let liked = likedUser.includes(this.props.user._id);
+				let numberOfLikes = likedUser.length;
+				this.setState({
+					title,
+					projectUrl,
+					module,
+					description,
+					imageUrl,
+					liked,
+					technologies,
+					numberOfLikes
+				});
+			})
+			.catch(err => {
+				console.log(err);
+			});
+	};
 
-  componentDidMount() {
-    this.getProject();
-  }
+	componentDidMount() {
+		this.getProject();
+	}
 
-  handleClick = () => {
-    this.setState(
-      {
-        liked: !this.state.liked
-      },
-      () => {
-        axios
-          .put(`/project/${this.props.match.params.id}`, {
-            user: this.props.user._id
-          })
-          .then(response =>
-            this.setState({ numberOfLikes: response.data.likedUser.length })
-          );
-      }
-    );
-  };
+	handleClick = () => {
+		this.setState(
+			{
+				liked: !this.state.liked
+			},
+			() => {
+				axios
+					.put(`/project/${this.props.match.params.id}`, {
+						user: this.props.user._id
+					})
+					.then(response =>
+						this.setState({
+							numberOfLikes: response.data.likedUser.length
+						})
+					);
+			}
+		);
+	};
 
   render() {
     return (

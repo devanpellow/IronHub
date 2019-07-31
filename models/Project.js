@@ -9,6 +9,7 @@ const projectSchema = new Schema(
     description: { type: String, required: true },
     imageUrl: String,
     technologies: [],
+    owner: [{ type: Schema.Types.ObjectId, ref: "owner" }],
     likedUser: [{ type: Schema.Types.ObjectId, ref: "User" }]
   }
   // ,
