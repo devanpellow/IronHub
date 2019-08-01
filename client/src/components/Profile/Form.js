@@ -12,6 +12,7 @@ export default class ProfileForm extends Component {
     skills: this.props.user.skills
   };
 
+
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -33,6 +34,7 @@ export default class ProfileForm extends Component {
         skills: this.state.skills
       })
       .then(res => {
+        console.log("found user",res.data)
         this.props.setUser(res.data);
       })
       .catch(err => {

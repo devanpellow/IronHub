@@ -98,11 +98,20 @@ router.put("/project/:id", (req, res) => {
 router.delete("/project/:id", (req, res) => {
 	const { user } = req.body;
 	const id = req.params.id;
-	Project.findOneAndRemove({ _id: req.params.id }).then(() => {
-		res.json({
-			message: "Successfully Deleted"
-		});
-	});
+	Project.findOneAndRemove({ _id: req.params.id })
+		.then(() => {
+			res.json({
+				message: "Successfully Deleted"
+			});
+			User.findByIdAndUpdate(
+				req.user._id,
+				{ $pull: { projects: { $in: id } } },
+				{ new: true }
+			)
+				.then(updatedUser => res.json(updatedUser))
+				.catch(err => console.log(err));
+		})
+		.catch(err => console.log(err));
 });
 
 module.exports = router;

@@ -81,7 +81,6 @@ export default class ProjectForm extends Component {
   };
 
   render() {
-    console.log("yo", this.props.user._id);
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group>

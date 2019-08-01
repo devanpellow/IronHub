@@ -20,6 +20,15 @@ export default class Profile extends Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.user !== prevProps.user) {
+      this.render()
+      console.log('yooo')
+    }
+  }
+
+
   displayEditForm = () => {
     this.setState({
       displayEditForm: !this.state.displayEditForm,
@@ -40,7 +49,6 @@ export default class Profile extends Component {
       .delete(`/project/${id}`, {})
       .then(() => {
         axios.get("/profile").then(res => {
-          console.log(res);
           this.props.setUser(res.data);
         });
       })
@@ -55,7 +63,7 @@ export default class Profile extends Component {
   render() {
     const { name, location, bio, github, linkedin, skills, projects } =
       this.props.user || this.props.location.user;
-
+    console.log("ppppppproooojects",projects)
     return (
       <div div className="container">
         <div className="profileClass">
@@ -91,7 +99,8 @@ export default class Profile extends Component {
                   Edit Profile
                 </button>
                 {this.state.displayEditForm ? (
-                  <ProfileForm
+                  <ProfileForm 
+                    setUser={this.props.setUser}
                     user={this.props.user || this.props.location.user}
                   />
                 ) : null}
