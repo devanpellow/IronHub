@@ -28,9 +28,26 @@ export class Home extends Component {
 					}
 				})
 
-				if (project.title.toLowerCase().indexOf(search) !== -1) {
-					return project;
+				let projectCampus = [];
+				project.owner.map(el => {
+					return projectCampus.push(el.location.toLowerCase());
+				});
+
+				let foundCampus = false
+				projectCampus.forEach(x => {
+					if(x.indexOf(search) !== -1){
+						foundTech = true
+					}
+				})
+
+				let projectTitle = project.title.toLowerCase().indexOf(search) !== -1
+				
+
+				if (projectTitle) {
+					return project
 				} else if (foundTech) {
+					return project
+				} else if (foundCampus) {
 					return project
 				}
 			});
@@ -44,6 +61,7 @@ export class Home extends Component {
 	}
 
 	render() {
+		console.log(this.state)
 		return (
 			<div className="home">
 				<div className="home-logo">

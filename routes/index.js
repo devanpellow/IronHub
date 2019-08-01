@@ -10,6 +10,7 @@ router.get("/", (req, res, next) => {
 
 router.get("/projects", (req, res) => {
   Project.find()
+    .populate('owner')
     .then(projects => {
       res.json(projects);
     })
