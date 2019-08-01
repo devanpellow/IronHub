@@ -30,7 +30,7 @@ router.post("/", (req, res) => {
 		});
 });
 
- router.get("/api", (req, res) => {
+ router.get("/", (req, res) => {
 	// console.log("/profile");
 	const id = req.user._id;
 

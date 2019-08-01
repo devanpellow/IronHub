@@ -47,7 +47,9 @@ export default class Profile extends Component {
     axios
       .delete(`/project/${id}`, {})
       .then(() => {
-        axios.get("/profile").then(res => {
+        axios.get("/profile")
+        .then(res => {
+          console.log(res.data)
           this.props.setUser(res.data);
         });
       })
@@ -116,7 +118,7 @@ export default class Profile extends Component {
           <div className="projectDisplayProfile">
             <h1>
               Projects:{" "}
-              {projects.map(project => (
+              {projects.length && projects.map(project => (
                 <div className="user-projects">
                   <Link to={`/project/${project._id}`}>
                     {project.title}
@@ -127,7 +129,7 @@ export default class Profile extends Component {
                   >
                     Delete
                   </button>
-                </div>
+             </div>
               ))}
             </h1>
             <div className="addEditButtons">

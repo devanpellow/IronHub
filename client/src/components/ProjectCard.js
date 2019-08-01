@@ -8,7 +8,7 @@ const ProjectCard = props => {
 
 	return (
 		<div className="projectCards">
-			{projects.map(project => {
+			{projects.length > 0 && projects.map(project => {
 				return (
 					<Card key={project._id} style={{ width: "18rem" }}>
 						<Link to={`/project/${project._id}`}>
