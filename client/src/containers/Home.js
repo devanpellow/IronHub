@@ -14,8 +14,10 @@ export class Home extends Component {
 		event.preventDefault();
 		this.setState({ search: event.target.value });
 		const search = event.target.value.toLowerCase();
-
+		
 		let filteredProjectsArr = this.state.allProjects.slice(0).filter(project => {
+				let projectTitle = project.title.toLowerCase().indexOf(search) !== -1
+				
 				let lowerCaseTechnologies = [];
 				project.technologies.map(el => {
 					return lowerCaseTechnologies.push(el.toLowerCase());
@@ -40,14 +42,26 @@ export class Home extends Component {
 					}
 				})
 
-				let projectTitle = project.title.toLowerCase().indexOf(search) !== -1
-				
+				let projectOwner = [];
+				project.owner.map(el => {
+					return projectOwner.push(el.name.toLowerCase());
+				});
+
+				let foundOwner = false
+				projectOwner.forEach(x => {
+					if(x.indexOf(search) !== -1){
+						foundOwner = true
+					}
+				})
+
 
 				if (projectTitle) {
 					return project
 				} else if (foundTech) {
 					return project
 				} else if (foundCampus) {
+					return project
+				} else if (foundOwner) {
 					return project
 				}
 			});
