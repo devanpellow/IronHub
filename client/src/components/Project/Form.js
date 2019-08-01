@@ -94,9 +94,9 @@ export default class ProjectForm extends Component {
             value={this.state.module}
           >
             <option>Choose...</option>
-            <option value="Module 1">Module 1: Frontend</option>
-            <option value="Module 2">Module 2: Backend</option>
-            <option value="Module 3">Module 3: React</option>
+            <option value="Module 1">Module 1</option>
+            <option value="Module 2">Module 2</option>
+            <option value="Module 3">Module 3</option>
           </Form.Control>
         </Form.Group>
         <Form.Group>
@@ -123,17 +123,23 @@ export default class ProjectForm extends Component {
 
         <Form.Group>
           <Form.Label>Technologies Used:</Form.Label>
-
+          <div className="tech-check">
           <Form.Check
             type="checkbox"
             value="HTML"
             label="HTML"
             onChange={this.handleChange}
-          />
+            />
           <Form.Check
             type="checkbox"
             value="CSS"
             label="CSS"
+            onChange={this.handleChange}
+            />
+          <Form.Check
+            type="checkbox"
+            value="SCSS"
+            label="SCSS"
             onChange={this.handleChange}
           />
           <Form.Check
@@ -168,12 +174,25 @@ export default class ProjectForm extends Component {
           />
           <Form.Check
             type="checkbox"
+            value="MongoDB"
+            label="MongoDB"
+            onChange={this.handleChange}
+            />
+            <Form.Check
+            type="checkbox"
             value="React"
             label="React"
             onChange={this.handleChange}
+            />
+            <Form.Check
+            type="checkbox"
+            value="Redux"
+            label="Redux"
+            onChange={this.handleChange}
           />
-        </Form.Group>
-        <Form.Group>
+          </div>
+          </Form.Group>
+          <Form.Group>
           <Form.Label htmlFor="projectUrl">Project URL: </Form.Label>
           <Form.Control
             onChange={this.handleChange}

@@ -23,7 +23,7 @@ const ProjectCard = props => {
 								<Card.Text>{project.title}</Card.Text>
 							<hr/ >
 							<div className="card-btn">
-								<div className="link-btn">
+								<div className="link-btn btn btn-outline-primary">
 									<a
 										href={project.projectUrl}
 										rel="noopener noreferrer"
@@ -32,7 +32,7 @@ const ProjectCard = props => {
 										Visit Site
 									</a>
 								</div>
-								<div className="link-btn">
+								<div className="link-btn btn btn-outline-primary">
 									<Link to={`/project/${project._id}`}>
 										Project Details
 									</Link>
