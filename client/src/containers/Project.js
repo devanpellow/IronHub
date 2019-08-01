@@ -117,6 +117,8 @@ export class Project extends Component {
 								<h3>{this.state.technologies.join(`, `)}</h3>
 							</div>
 						</div>
+						</div>
+						</div>
 						<div className="likeButton">
 							<h3>{this.state.numberOfLikes}</h3>
 							<LikeButton
@@ -124,8 +126,6 @@ export class Project extends Component {
 								handleClick={this.handleClick}
 							/>
 						</div>
-					</div>
-				</div>
 				<div className="projectCardWrapper">
 					<ProjectCard
 						allProjects={this.state.allProjects}

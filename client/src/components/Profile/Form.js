@@ -21,7 +21,7 @@ export default class ProfileForm extends Component {
   };
 
   handleSubmit = event => {
-    console.log("handleSubmit");
+
     event.preventDefault();
 
     axios
@@ -34,7 +34,7 @@ export default class ProfileForm extends Component {
         skills: this.state.skills
       })
       .then(res => {
-        console.log("found user",res.data)
+        
         this.props.setUser(res.data);
       })
       .catch(err => {

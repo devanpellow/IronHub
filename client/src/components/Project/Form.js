@@ -16,7 +16,7 @@ export default class ProjectForm extends Component {
 
   handleChange = event => {
     const { name, value } = event.target;
-    //console.log(value);
+    
     if (!event.target.name) {
       let technologiesCopy = [...this.state.technologies];
       if (technologiesCopy.includes(value)) {
@@ -33,7 +33,7 @@ export default class ProjectForm extends Component {
   };
 
   handleSubmit = event => {
-    console.log("handleSubmit");
+    
 
     event.preventDefault();
 
@@ -206,7 +206,7 @@ export default class ProjectForm extends Component {
         {this.state.imageUrl && (
           <img src={this.state.imageUrl} alt="website screenshot" />
         )}
-        <Button type="submit">Add Project</Button>
+        <Button type="submit">Submit Project</Button>
       </Form>
     );
   }
