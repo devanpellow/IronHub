@@ -30,7 +30,7 @@ router.post("/", (req, res) => {
 		});
 });
 
-/* router.get("/", (req, res) => {
+ router.get("/api", (req, res) => {
 	// console.log("/profile");
 	const id = req.user._id;
 
@@ -42,7 +42,7 @@ router.post("/", (req, res) => {
 		.catch(err => {
 			res.json(err);
 		});
-}); */
+});
 
 router.put("/", (req, res) => {
 	const id = req.user._id;
