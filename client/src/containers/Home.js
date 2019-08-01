@@ -20,6 +20,8 @@ export class Home extends Component {
       .filter(project => {
         let projectTitle = project.title.toLowerCase().indexOf(search) !== -1;
 
+        let module = project.module.toLowerCase().indexOf(search) !== -1;
+
         let lowerCaseTechnologies = [];
         project.technologies.map(el => {
           return lowerCaseTechnologies.push(el.toLowerCase());
@@ -56,15 +58,8 @@ export class Home extends Component {
           }
         });
 
-        if (projectTitle) {
-          return project;
-        } else if (foundTech) {
-          return project;
-        } else if (foundCampus) {
-          return project;
-        } else if (foundOwner) {
-          return project;
-        }
+        if(projectTitle || foundTech || foundCampus || foundOwner|| module) return project;
+
       });
     this.setState({ filteredProjects: filteredProjectsArr });
   };

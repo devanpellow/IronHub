@@ -80,14 +80,21 @@ export default class Profile extends Component {
               <h1 className="descriptionTitle">Bio:</h1>
               <h1>{bio}</h1>
             </div>
-            <div>
-              <h1 className="descriptionTitle">Github:</h1>
-              <h1>{github}</h1>
+
+              <div className="profile-logo-link">
+                <a href={github}
+                  rel="noopener noreferrer"
+                  target="_blank">
+                <img src="/../images/github_logo.png" alt="github"/>
+                </a>
+             
+              <a href={linkedin}
+                rel="noopener noreferrer"
+                target="_blank">
+              <img src="/../images/linkedin_logo.png" alt="linkedin"/>
+              </a>
             </div>
-            <div>
-              <h1 className="descriptionTitle">linkedin:</h1>
-              <h1>{linkedin}</h1>
-            </div>
+            
             <div>
               <h1 className="descriptionTitle">Skills:</h1>
               <h1>{skills}</h1>
@@ -111,19 +118,12 @@ export default class Profile extends Component {
             <h1>
               Projects:{" "}
               {projects.map(project => (
-                <div>
+                <div className="user-projects">
                   <Link to={`/project/${project._id}`}>
                     {project.title}
                     <br />
                   </Link>{" "}
-                  <button
-                    className="btn btn-primary"
-                    onClick={e => this.editProject()}
-                  >
-                    Edit
-                  </button>{" "}
-                  <button
-                    className="btn btn-primary"
+                  <button  className="btn btn-outline-danger"
                     onClick={e => this.deleteProject(e, project._id)}
                   >
                     Delete

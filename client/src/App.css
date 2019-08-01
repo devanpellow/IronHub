@@ -42,6 +42,8 @@ body {
   text-align: center;
 }
 
+/* Project Card */
+
 .projectCards {
   display: flex;
   flex-direction: row;
@@ -52,14 +54,41 @@ body {
   text-align: center;
 }
 
+.card {
+  display:flex;
+  flex-direction: column;
+  justify-items: center;
+  box-shadow: .5rem .5rem 1rem silver;
+  border: 1px solid white;
+  background-color: #ffffff;
+  transition: transform .4s;
+}
+
+.card:hover {
+  transform: scale(1.5)
+}
+
+.card-img.projectImg {
+  object-fit: contain;
+}
+
 .projectCardWrapper {
   margin-top: 0px;
 }
 
-.projectImg {
+.card-btn {
+  display: flex;
+  flex-direction: row;
+}
+.link-btn {
+  margin: 0 .1rem;
+  /* border: 1px solid #f4f4f4f4 */
+}
+
+/* .projectImg {
   width: auto;
   height: 10rem;
-}
+} */
 
 .btn-primary {
   background-color: rgb(86, 196, 239);
@@ -101,12 +130,21 @@ body {
   margin-right: 1rem;
 }
 
+.profile-logo-link img{
+  width: 3rem;
+  margin: 2rem;
+}
+
 /* Project Page */
+
+.profileClass{
+  display: flex;
+  flex-direction: row;
+}
 
 .projectContainer {
   display: flex;
   flex-direction: row;
-
   min-height: 58rem;
 }
 .projectDescriptionBlockWrapper {
@@ -148,6 +186,7 @@ body {
   min-height: 40rem;
   padding: 0.5rem;
 }
+
 
 /* Like Button */
 .likeButton {
