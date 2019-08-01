@@ -30,10 +30,11 @@ router.post("/", (req, res) => {
 		});
 });
 
-router.get("/", (req, res) => {
+/* router.get("/", (req, res) => {
+	// console.log("/profile");
 	const id = req.user._id;
 
-User.findById({ _id: id })
+	User.findById({ _id: id })
 		.populate("projects")
 		.then(user => {
 			res.json(user);
@@ -41,7 +42,7 @@ User.findById({ _id: id })
 		.catch(err => {
 			res.json(err);
 		});
-});
+}); */
 
 router.put("/", (req, res) => {
 	const id = req.user._id;
@@ -58,6 +59,7 @@ router.put("/", (req, res) => {
 		},
 		{ new: true }
 	)
+		.populate("projects")
 		.then(user => {
 			console.log(user);
 			res.json(user);
