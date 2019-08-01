@@ -31,7 +31,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "react": "^16.8.6",
-    "react-bootstrap": "^1.0.0-beta.9",
+    "react-bootstrap": "^1.0.0-beta.10",
     "react-router-dom": "^5.0.1",
     "serve-favicon": "^2.5.0"
   },
