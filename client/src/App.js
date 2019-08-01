@@ -6,6 +6,7 @@ import Protected from "./components/Protected";
 
 import Profile from "./containers/Profile";
 import Project from "./containers/Project";
+import UserProfile from "./containers/UserProfile";
 import Home from "./containers/Home";
 import Signup from "./containers/Signup";
 import Login from "./containers/Login";
@@ -47,6 +48,7 @@ class App extends Component {
 					<Protected
 						exact
 						path="/profile"
+						setUser={this.setUser}
 						redirectPath="/login"
 						user={this.state.user}
 						component={Profile}
@@ -62,6 +64,7 @@ class App extends Component {
 							/>
 						)}
 					/>
+					<Route path={"/profile/:id"} component={UserProfile} />
 				</Switch>
 			</div>
 		);

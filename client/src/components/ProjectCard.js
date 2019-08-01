@@ -11,25 +11,33 @@ const ProjectCard = props => {
 			{projects.map(project => {
 				return (
 					<Card key={project._id} style={{ width: "18rem" }}>
+						<Link to={`/project/${project._id}`}>
+							<Card.Img
+								className="projectImg"
+								src={`${project.imageUrl}`}
+								alt="project screenshot"
+							/>
+						</Link>
 						<Card.Body>
-							<Link to={`/project/${project._id}`}>
-								<img
-									className="projectImg"
-									src={`${project.imageUrl}`}
-									alt="project screenshot"
-								/>
+							
 								<Card.Text>{project.title}</Card.Text>
-							</Link>
-							<a
-								href={project.projectUrl}
-								rel="noopener noreferrer"
-								target="_blank"
-							>
-								Visit Site
-							</a>
-							<Link to={`/project/${project._id}`}>
-								Project Details
-							</Link>
+							<hr/ >
+							<div className="card-btn">
+								<div className="link-btn">
+									<a
+										href={project.projectUrl}
+										rel="noopener noreferrer"
+										target="_blank"
+									>
+										Visit Site
+									</a>
+								</div>
+								<div className="link-btn">
+									<Link to={`/project/${project._id}`}>
+										Project Details
+									</Link>
+								</div>
+							</div>
 						</Card.Body>
 					</Card>
 				);

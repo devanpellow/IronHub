@@ -10,12 +10,13 @@ export default class ProjectForm extends Component {
     description: "",
     module: "",
     imageUrl: "",
-    technologies: []
+    technologies: [],
+    owner: []
   };
 
   handleChange = event => {
     const { name, value } = event.target;
-    console.log(value);
+    //console.log(value);
     if (!event.target.name) {
       let technologiesCopy = [...this.state.technologies];
       if (technologiesCopy.includes(value)) {
@@ -43,7 +44,8 @@ export default class ProjectForm extends Component {
         description: this.state.description,
         module: this.state.module,
         imageUrl: this.state.imageUrl,
-        technologies: this.state.technologies
+        technologies: this.state.technologies,
+        owner: this.props.user._id
       })
       .then(newProject => {
         // this.props.refreshList();
@@ -51,8 +53,10 @@ export default class ProjectForm extends Component {
         console.log("newData", newData);
         axios
           .put("/profile/addproject", { newData })
-          .then(updatedUser => {
-            console.log("updateUser", updatedUser);
+          .then(res => {
+            console.log(res.data);
+            this.props.setUser(res.data);
+
             this.setState({
               title: "",
               projectURL: "",

@@ -10,13 +10,14 @@ router.get("/", (req, res, next) => {
 
 router.get("/projects", (req, res) => {
 	Project.find()
-	.then(projects =>{
-		res.json(projects)
-	})
-	.catch(err => {
-		res.json(err);
-	});
-})
+		.populate("owner")
+		.then(projects => {
+			res.json(projects);
+		})
+		.catch(err => {
+			res.json(err);
+		});
+});
 
 router.post("/profile", (req, res) => {
 	const {
@@ -25,7 +26,8 @@ router.post("/profile", (req, res) => {
 		description,
 		module,
 		imageUrl,
-		technologies
+		technologies,
+		owner
 	} = req.body;
 	console.log(req.body);
 	Project.create({
@@ -34,7 +36,8 @@ router.post("/profile", (req, res) => {
 		description,
 		module,
 		imageUrl,
-		technologies
+		technologies,
+		owner
 	})
 		.then(project => {
 			res.json(project);
@@ -44,12 +47,23 @@ router.post("/profile", (req, res) => {
 		});
 });
 
+router.get("/profile/:id", (req, res) => {
+	const { id } = req.params;
+	User.findById({ _id: id })
+		.populate("projects")
+		.then(user => {
+			res.json(user);
+		})
+		.catch(err => {
+			res.json(err);
+		});
+});
+
 router.get("/project/:id", (req, res) => {
 	const { id } = req.params;
-	console.log(req.body);
 	Project.findById({ _id: id })
+		.populate("owner")
 		.then(project => {
-			console.log(project);
 			res.json(project);
 		})
 		.catch(err => {
@@ -79,6 +93,25 @@ router.put("/project/:id", (req, res) => {
 			});
 		}
 	});
+});
+
+router.delete("/project/:id", (req, res) => {
+	const { user } = req.body;
+	const id = req.params.id;
+	Project.findOneAndRemove({ _id: req.params.id })
+		.then(() => {
+			res.json({
+				message: "Successfully Deleted"
+			});
+			User.findByIdAndUpdate(
+				req.user._id,
+				{ $pull: { projects: { $in: id } } },
+				{ new: true }
+			)
+				.then(updatedUser => res.json(updatedUser))
+				.catch(err => console.log(err));
+		})
+		.catch(err => console.log(err));
 });
 
 module.exports = router;

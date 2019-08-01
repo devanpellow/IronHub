@@ -9,12 +9,9 @@ const projectSchema = new Schema(
     description: { type: String, required: true },
     imageUrl: String,
     technologies: [],
+    owner: [{ type: Schema.Types.ObjectId, ref: "User" }],
     likedUser: [{ type: Schema.Types.ObjectId, ref: "User" }]
   }
-  // ,
-  // {
-  //   timestamps: true
-  // }
 );
 
 const Project = mongoose.model("Project", projectSchema);
