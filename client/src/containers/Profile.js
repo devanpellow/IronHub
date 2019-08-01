@@ -23,11 +23,10 @@ export default class Profile extends Component {
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     if (this.props.user !== prevProps.user) {
-      this.render()
-      console.log('yooo')
+      this.render();
+      console.log("yooo");
     }
   }
-
 
   displayEditForm = () => {
     this.setState({
@@ -63,7 +62,7 @@ export default class Profile extends Component {
   render() {
     const { name, location, bio, github, linkedin, skills, projects } =
       this.props.user || this.props.location.user;
-    console.log("ppppppproooojects",projects)
+    console.log("ppppppproooojects", projects);
     return (
       <div div className="container">
         <div className="profileClass">
@@ -98,20 +97,20 @@ export default class Profile extends Component {
             <div>
               <h1 className="descriptionTitle">Skills:</h1>
               <h1>{skills}</h1>
-              <div className="addEditButtons">
-                <button
-                  className="btn btn-primary"
-                  onClick={this.displayEditForm}
-                >
-                  Edit Profile
-                </button>
-                {this.state.displayEditForm ? (
-                  <ProfileForm 
-                    setUser={this.props.setUser}
-                    user={this.props.user || this.props.location.user}
-                  />
-                ) : null}
-              </div>
+            </div>
+            <div id="buttonProfileDetailsContainer" className="addEditButtons">
+              <button
+                className="btn btn-primary"
+                onClick={this.displayEditForm}
+              >
+                Edit Profile
+              </button>
+              {this.state.displayEditForm ? (
+                <ProfileForm
+                  setUser={this.props.setUser}
+                  user={this.props.user || this.props.location.user}
+                />
+              ) : null}
             </div>
           </div>
           <div className="projectDisplayProfile">

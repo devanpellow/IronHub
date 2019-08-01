@@ -104,17 +104,37 @@ body {
   border: 0.1rem;
 }
 
+.mainCntainer {
+  display: flex;
+  justify-content: center;
+}
+
+/* login Page */
+
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 30rem;
+  min-width: 10rem;
+  min-height: 50rem;
+  max-height: 58rem;
+}
+
 /* Profile Page */
 .addEditButtons {
   min-width: 20rem;
   align-self: flex-end;
 }
-
+#buttonProfileDetailsContainer {
+  align-self: flex-start;
+  margin-top: auto;
+}
 .profileClass {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  max-height: 58rem;
+  min-height: 58rem;
 }
 
 .profileDetailsContainer {
