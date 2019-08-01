@@ -44,46 +44,44 @@ export default class Profile extends Component {
   //axios put and then put route to edit or delete project
 
   render() {
-    const { name, location, bio, github, linkedin, skills, projects, _id } =
+    const { name, location, bio, github, linkedin, skills, projects } =
       this.props.user || this.props.location.user;
 
     return (
-      <div className="container">
-        <div className="profileClass">
-          <div className="profileDetailsContainer">
-            <h3>
-              Name:
-              {name}
-            </h3>
-            <h3>
-              Campus:
-              {location}
-            </h3>
-            <h3>
-              Bio:
-              {bio}
-            </h3>
-            <h3>Github: {github}</h3>
-            <h3>linkedin: {linkedin}</h3>
-            <h3>Skills: {skills}</h3>
-          </div>
-          <div className="projectDisplayProfile">
-            <h3>
-              Projects:{" "}
-              {projects.map(project => (
+      <div className="profileClass">
+        <div>
+          <h1>Profile Page:</h1>
+          <h1>Name: {name}</h1>
+          <h1>Campus: {location}</h1>
+          <h1>Bio: {bio}</h1>
+          <h1>Github: {github}</h1>
+          <h1>linkedin: {linkedin}</h1>
+          <h1>Skills: {skills}</h1>
+        </div>
+        <div className="projectDisplayProfile">
+          <h1>
+            Projects:{" "}
+            {projects.map(project => (
+              <div>
                 <Link to={`/project/${project._id}`}>
                   {project.title}
                   <br />
-                </Link>
-              ))}
-              <button
-                className="btn btn-primary"
-                onClick={e => this.deleteProject(e)}
-              >
-                Delete
-              </button>
-            </h3>
-          </div>
+                </Link>{" "}
+                <button
+                  className="btn btn-primary"
+                  onClick={e => this.editProject()}
+                >
+                  Edit
+                </button>{" "}
+                <button
+                  className="btn btn-primary"
+                  onClick={e => this.deleteProject(e, project._id)}
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
+          </h1>
         </div>
         <div>
           <button onClick={this.displayEditForm}>Edit Profile</button>
@@ -92,7 +90,7 @@ export default class Profile extends Component {
           ) : null}
           <button onClick={this.displayProjectForm}>Add Project</button>
           {this.state.displayProjectForm ? (
-            <ProjectForm setUser={this.props.setUser} user={this.props.user} />
+            <ProjectForm setUser={this.props.setUser} />
           ) : null}
         </div>
       </div>
