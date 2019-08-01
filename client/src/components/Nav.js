@@ -32,7 +32,7 @@ const Nav = props => {
                 <Button variant="link">Profile</Button>
               </Link>
               <Link onClick={() => handleSubmit(props)} to="/">
-                Logout
+                <Button variant="link">Logout</Button>
               </Link>
             </Navbar.Collapse>
           </>

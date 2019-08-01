@@ -8,6 +8,13 @@ html {
 /* Nav Bar */
 #nav-container {
   border-bottom: 1px rgb(0, 0, 0) solid;
+  font-size: 1.6rem;
+}
+.btn-link {
+  font-size: 1.6rem;
+}
+.btn.btn-primary {
+  min-width: 22rem;
 }
 
 body {
@@ -20,12 +27,12 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 80vh;
+  min-height: 58rem;
 }
 
 .home-logo {
-  width: 100px;
-  padding-bottom: 50px;
+  align-self: center;
+  margin-bottom: 3rem;
 }
 
 .search-input {
@@ -40,19 +47,18 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin-bottom: 30px;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
   text-align: center;
 }
 
 .projectCardWrapper {
   margin-top: 0px;
-  border: rgb(239, 86, 193);
-  border-style: dotted;
 }
 
 .projectImg {
   width: auto;
-  height: 100px;
+  height: 10rem;
 }
 
 .btn-primary {
@@ -66,23 +72,33 @@ body {
 }
 
 .customContainer {
-  border: 1px;
+  border: 0.1rem;
 }
 
 /* Profile Page */
+.addEditButtons {
+  min-width: 20rem;
+  align-self: flex-end;
+}
 
 .profileClass {
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  width: 80vw;
+  max-height: 58rem;
 }
 
-/* .profileDetailsContainer{
+.profileDetailsContainer {
+  display: flex;
+  flex-direction: column;
 
-} */
+  margin-right: 1rem;
+  max-height: 58rem;
+}
 
 .projectDisplayProfile {
   display: grid;
+  margin-right: 1rem;
 }
 
 /* Project Page */
@@ -90,7 +106,8 @@ body {
 .projectContainer {
   display: flex;
   flex-direction: row;
-  align-content: space-between;
+
+  min-height: 58rem;
 }
 .projectDescriptionBlockWrapper {
   display: flex;
@@ -102,7 +119,6 @@ body {
 .projectDescriptionBlock {
   display: flex;
   flex-direction: column;
-  border: rgb(239, 86, 193);
   border-style: dotted;
   padding: 0.5rem;
   align-self: center;

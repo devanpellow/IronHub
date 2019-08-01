@@ -57,67 +57,86 @@ export default class Profile extends Component {
       this.props.user || this.props.location.user;
 
     return (
-      <div className="profileClass">
-        <div className="profileDetailsContainer">
-          <div>
-            <h3 className="descriptionTitle">Name:</h3>
-            <h3>{name}</h3>
-          </div>
-          <div>
-            <h3 className="descriptionTitle">Campus:</h3>
-            <h3>{location}</h3>
-          </div>
-          <div>
-            <h3 className="descriptionTitle">Bio:</h3>
-            <h3>{bio}</h3>
-          </div>
-          <div>
-            <h3 className="descriptionTitle">Github:</h3>
-            <h3>{github}</h3>
-          </div>
-          <div>
-            <h3 className="descriptionTitle">linkedin:</h3>
-            <h3>{linkedin}</h3>
-          </div>
-          <div>
-            <h3 className="descriptionTitle">Skills:</h3>
-            <h3>{skills}</h3>
-          </div>
-        </div>
-        <div className="projectDisplayProfile">
-          <h1>
-            Projects:{" "}
-            {projects.map(project => (
-              <div>
-                <Link to={`/project/${project._id}`}>
-                  {project.title}
-                  <br />
-                </Link>{" "}
+      <div div className="container">
+        <div className="profileClass">
+          <div className="profileDetailsContainer">
+            <div>
+              <h1 className="descriptionTitle">Name:</h1>
+              <h1>{name}</h1>
+            </div>
+            <div>
+              <h1 className="descriptionTitle">Campus:</h1>
+              <h1>{location}</h1>
+            </div>
+            <div>
+              <h1 className="descriptionTitle">Bio:</h1>
+              <h1>{bio}</h1>
+            </div>
+            <div>
+              <h1 className="descriptionTitle">Github:</h1>
+              <h1>{github}</h1>
+            </div>
+            <div>
+              <h1 className="descriptionTitle">linkedin:</h1>
+              <h1>{linkedin}</h1>
+            </div>
+            <div>
+              <h1 className="descriptionTitle">Skills:</h1>
+              <h1>{skills}</h1>
+              <div className="addEditButtons">
                 <button
                   className="btn btn-primary"
-                  onClick={e => this.editProject()}
+                  onClick={this.displayEditForm}
                 >
-                  Edit
-                </button>{" "}
-                <button
-                  className="btn btn-primary"
-                  onClick={e => this.deleteProject(e, project._id)}
-                >
-                  Delete
+                  Edit Profile
                 </button>
+                {this.state.displayEditForm ? (
+                  <ProfileForm
+                    user={this.props.user || this.props.location.user}
+                  />
+                ) : null}
               </div>
-            ))}
-          </h1>
-        </div>
-        <div>
-          <button onClick={this.displayEditForm}>Edit Profile</button>
-          {this.state.displayEditForm ? (
-            <ProfileForm user={this.props.user || this.props.location.user} />
-          ) : null}
-          <button onClick={this.displayProjectForm}>Add Project</button>
-          {this.state.displayProjectForm ? (
-            <ProjectForm setUser={this.props.setUser} />
-          ) : null}
+            </div>
+          </div>
+          <div className="projectDisplayProfile">
+            <h1>
+              Projects:{" "}
+              {projects.map(project => (
+                <div>
+                  <Link to={`/project/${project._id}`}>
+                    {project.title}
+                    <br />
+                  </Link>{" "}
+                  <button
+                    className="btn btn-primary"
+                    onClick={e => this.editProject()}
+                  >
+                    Edit
+                  </button>{" "}
+                  <button
+                    className="btn btn-primary"
+                    onClick={e => this.deleteProject(e, project._id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              ))}
+            </h1>
+            <div className="addEditButtons">
+              <button
+                className="btn btn-primary"
+                onClick={this.displayProjectForm}
+              >
+                Add Project
+              </button>
+              {this.state.displayProjectForm ? (
+                <ProjectForm
+                  setUser={this.props.setUser}
+                  user={this.props.user}
+                />
+              ) : null}
+            </div>
+          </div>
         </div>
         <div className="projectCardWrapper">
           <ProjectCard
