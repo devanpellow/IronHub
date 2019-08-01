@@ -2,14 +2,23 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ProfileForm from "../components/Profile/Form";
 import ProjectForm from "../components/Project/Form";
+import ProjectCard from "../components/ProjectCard";
 //import Project from "../components/Project";
 import axios from "axios";
 
 export default class Profile extends Component {
   state = {
     displayEditForm: false,
-    displayProjectForm: false
+    displayProjectForm: false,
+    allProjects: [],
+    filteredProjects: []
   };
+
+  componentDidMount() {
+    axios.get("/projects").then(response => {
+      this.setState({ allProjects: response.data });
+    });
+  }
 
   displayEditForm = () => {
     this.setState({
@@ -50,28 +59,37 @@ export default class Profile extends Component {
     return (
       <div className="container">
         <div className="profileClass">
-          <div className="profileDetailsContainer">
-            <h3>
-              Name:
-              {name}
-            </h3>
-            <h3>
-              Campus:
-              {location}
-            </h3>
-            <h3>
-              Bio:
-              {bio}
-            </h3>
-            <h3>Github: {github}</h3>
-            <h3>linkedin: {linkedin}</h3>
-            <h3>Skills: {skills}</h3>
+          <div key={_id} className="profileDetailsContainer">
+            <div>
+              <h3 className="descriptionTitle">Name:</h3>
+              <h3>{name}</h3>
+            </div>
+            <div>
+              <h3 className="descriptionTitle">Campus:</h3>
+              <h3>{location}</h3>
+            </div>
+            <div>
+              <h3 className="descriptionTitle">Bio:</h3>
+              <h3>{bio}</h3>
+            </div>
+            <div>
+              <h3 className="descriptionTitle">Github:</h3>
+              <h3>{github}</h3>
+            </div>
+            <div>
+              <h3 className="descriptionTitle">linkedin:</h3>
+              <h3>{linkedin}</h3>
+            </div>
+            <div>
+              <h3 className="descriptionTitle">Skills:</h3>
+              <h3>{skills}</h3>
+            </div>
           </div>
           <div className="projectDisplayProfile">
             <h3>
               Projects:{" "}
               {projects.map(project => (
-                <Link to={`/project/${project._id}`}>
+                <Link to={`/project/${project._id}`} key={project._id}>
                   {project.title}
                   <br />
                 </Link>
@@ -94,6 +112,12 @@ export default class Profile extends Component {
           {this.state.displayProjectForm ? (
             <ProjectForm setUser={this.props.setUser} user={this.props.user} />
           ) : null}
+        </div>
+        <div className="projectCardWrapper">
+          <ProjectCard
+            allProjects={this.state.allProjects}
+            filtered={this.state.filteredProjects}
+          />
         </div>
       </div>
     );

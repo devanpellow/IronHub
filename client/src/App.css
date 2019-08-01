@@ -46,6 +46,8 @@ body {
 
 .projectCardWrapper {
   margin-top: 0px;
+  border: rgb(239, 86, 193);
+  border-style: dotted;
 }
 
 .projectImg {
