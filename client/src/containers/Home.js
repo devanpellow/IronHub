@@ -54,7 +54,6 @@ export class Home extends Component {
 					}
 				})
 
-
 				if (projectTitle) {
 					return project
 				} else if (foundTech) {
