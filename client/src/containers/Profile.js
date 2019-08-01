@@ -2,14 +2,23 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ProfileForm from "../components/Profile/Form";
 import ProjectForm from "../components/Project/Form";
+import ProjectCard from "../components/ProjectCard";
 //import Project from "../components/Project";
 import axios from "axios";
 
 export default class Profile extends Component {
   state = {
     displayEditForm: false,
-    displayProjectForm: false
+    displayProjectForm: false,
+    allProjects: [],
+    filteredProjects: []
   };
+
+  componentDidMount() {
+    axios.get("/projects").then(response => {
+      this.setState({ allProjects: response.data });
+    });
+  }
 
   displayEditForm = () => {
     this.setState({
@@ -49,14 +58,31 @@ export default class Profile extends Component {
 
     return (
       <div className="profileClass">
-        <div>
-          <h1>Profile Page:</h1>
-          <h1>Name: {name}</h1>
-          <h1>Campus: {location}</h1>
-          <h1>Bio: {bio}</h1>
-          <h1>Github: {github}</h1>
-          <h1>linkedin: {linkedin}</h1>
-          <h1>Skills: {skills}</h1>
+        <div className="profileDetailsContainer">
+          <div>
+            <h3 className="descriptionTitle">Name:</h3>
+            <h3>{name}</h3>
+          </div>
+          <div>
+            <h3 className="descriptionTitle">Campus:</h3>
+            <h3>{location}</h3>
+          </div>
+          <div>
+            <h3 className="descriptionTitle">Bio:</h3>
+            <h3>{bio}</h3>
+          </div>
+          <div>
+            <h3 className="descriptionTitle">Github:</h3>
+            <h3>{github}</h3>
+          </div>
+          <div>
+            <h3 className="descriptionTitle">linkedin:</h3>
+            <h3>{linkedin}</h3>
+          </div>
+          <div>
+            <h3 className="descriptionTitle">Skills:</h3>
+            <h3>{skills}</h3>
+          </div>
         </div>
         <div className="projectDisplayProfile">
           <h1>
@@ -92,6 +118,12 @@ export default class Profile extends Component {
           {this.state.displayProjectForm ? (
             <ProjectForm setUser={this.props.setUser} user={this.props.user} />
           ) : null}
+        </div>
+        <div className="projectCardWrapper">
+          <ProjectCard
+            allProjects={this.state.allProjects}
+            filtered={this.state.filteredProjects}
+          />
         </div>
       </div>
     );
