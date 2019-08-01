@@ -53,55 +53,61 @@ export default class Profile extends Component {
   //axios put and then put route to edit or delete project
 
   render() {
-    const { name, location, bio, github, linkedin, skills, projects, _id } =
+    const { name, location, bio, github, linkedin, skills, projects } =
       this.props.user || this.props.location.user;
 
     return (
-      <div className="container">
-        <div className="profileClass">
-          <div key={_id} className="profileDetailsContainer">
-            <div>
-              <h3 className="descriptionTitle">Name:</h3>
-              <h3>{name}</h3>
-            </div>
-            <div>
-              <h3 className="descriptionTitle">Campus:</h3>
-              <h3>{location}</h3>
-            </div>
-            <div>
-              <h3 className="descriptionTitle">Bio:</h3>
-              <h3>{bio}</h3>
-            </div>
-            <div>
-              <h3 className="descriptionTitle">Github:</h3>
-              <h3>{github}</h3>
-            </div>
-            <div>
-              <h3 className="descriptionTitle">linkedin:</h3>
-              <h3>{linkedin}</h3>
-            </div>
-            <div>
-              <h3 className="descriptionTitle">Skills:</h3>
-              <h3>{skills}</h3>
-            </div>
+      <div className="profileClass">
+        <div className="profileDetailsContainer">
+          <div>
+            <h3 className="descriptionTitle">Name:</h3>
+            <h3>{name}</h3>
           </div>
-          <div className="projectDisplayProfile">
-            <h3>
-              Projects:{" "}
-              {projects.map(project => (
-                <Link to={`/project/${project._id}`} key={project._id}>
+          <div>
+            <h3 className="descriptionTitle">Campus:</h3>
+            <h3>{location}</h3>
+          </div>
+          <div>
+            <h3 className="descriptionTitle">Bio:</h3>
+            <h3>{bio}</h3>
+          </div>
+          <div>
+            <h3 className="descriptionTitle">Github:</h3>
+            <h3>{github}</h3>
+          </div>
+          <div>
+            <h3 className="descriptionTitle">linkedin:</h3>
+            <h3>{linkedin}</h3>
+          </div>
+          <div>
+            <h3 className="descriptionTitle">Skills:</h3>
+            <h3>{skills}</h3>
+          </div>
+        </div>
+        <div className="projectDisplayProfile">
+          <h1>
+            Projects:{" "}
+            {projects.map(project => (
+              <div>
+                <Link to={`/project/${project._id}`}>
                   {project.title}
                   <br />
-                </Link>
-              ))}
-              <button
-                className="btn btn-primary"
-                onClick={e => this.deleteProject(e)}
-              >
-                Delete
-              </button>
-            </h3>
-          </div>
+                </Link>{" "}
+                <button
+                  className="btn btn-primary"
+                  onClick={e => this.editProject()}
+                >
+                  Edit
+                </button>{" "}
+                <button
+                  className="btn btn-primary"
+                  onClick={e => this.deleteProject(e, project._id)}
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
+          </h1>
         </div>
         <div>
           <button onClick={this.displayEditForm}>Edit Profile</button>
@@ -110,7 +116,7 @@ export default class Profile extends Component {
           ) : null}
           <button onClick={this.displayProjectForm}>Add Project</button>
           {this.state.displayProjectForm ? (
-            <ProjectForm setUser={this.props.setUser} user={this.props.user} />
+            <ProjectForm setUser={this.props.setUser} />
           ) : null}
         </div>
         <div className="projectCardWrapper">
