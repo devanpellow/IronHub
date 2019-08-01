@@ -31,10 +31,9 @@ router.post("/", (req, res) => {
 });
 
 router.get("/", (req, res) => {
-	console.log("/profile");
 	const id = req.user._id;
 
-	const user = User.findById({ _id: id })
+User.findById({ _id: id })
 		.populate("projects")
 		.then(user => {
 			res.json(user);
